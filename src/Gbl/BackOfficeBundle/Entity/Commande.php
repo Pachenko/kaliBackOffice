@@ -46,6 +46,12 @@ class Commande
      * @ORM\OneToMany(targetEntity="ProduitCommande" , mappedBy="commandes" , cascade={"all"})
      */
     protected $pc;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="type")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     */
+    protected $user;
 
     public function __construct() {
 
@@ -161,5 +167,15 @@ class Commande
     public function getPc()
     {
         return $this->pc;
+    }
+    
+    public function getUser()
+    {
+    	return $this->user;
+    }
+    
+    public function setUser($user)
+    {
+    	$this->user = $user;
     }
 }

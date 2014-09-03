@@ -48,6 +48,12 @@ class Theme
      * @ORM\Column(name="image_slider", type="string", length=255)
      */
     private $imageSlider;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="type")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     */
+    private $user;
 
 
     /**
