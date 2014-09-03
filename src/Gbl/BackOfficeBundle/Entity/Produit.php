@@ -75,6 +75,11 @@ class Produit
 	 * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id")
      */
     private $categorie;
+    
+	/**
+     * @ORM\OneToMany(targetEntity="ProduitCommande" , mappedBy="produits" , cascade={"all"})
+     */
+    protected $pc;
 
     public function __construct()
     {
@@ -278,5 +283,38 @@ class Produit
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Add pc
+     *
+     * @param \Gbl\BackOfficeBundle\Entity\ProduitCommande $pc
+     * @return Produit
+     */
+    public function addPc(\Gbl\BackOfficeBundle\Entity\ProduitCommande $pc)
+    {
+        $this->pc[] = $pc;
+
+        return $this;
+    }
+
+    /**
+     * Remove pc
+     *
+     * @param \Gbl\BackOfficeBundle\Entity\ProduitCommande $pc
+     */
+    public function removePc(\Gbl\BackOfficeBundle\Entity\ProduitCommande $pc)
+    {
+        $this->pc->removeElement($pc);
+    }
+
+    /**
+     * Get pc
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPc()
+    {
+        return $this->pc;
     }
 }

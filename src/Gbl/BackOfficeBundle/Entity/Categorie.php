@@ -39,7 +39,7 @@ class Categorie
      * @ORM\OneToMany(targetEntity="Produit", mappedBy="categorie", cascade={"remove", "persist"})
      */
     protected $produits;
-
+    
     public function __construct()
     {
     	$this->nom 		   = '';

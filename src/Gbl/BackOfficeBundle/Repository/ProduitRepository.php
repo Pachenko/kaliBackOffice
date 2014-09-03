@@ -1,6 +1,6 @@
 <?php
 
-namespace Gbl\BackOfficeBundle\Entity;
+namespace Gbl\BackOfficeBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
