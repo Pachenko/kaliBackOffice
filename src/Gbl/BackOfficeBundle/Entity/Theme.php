@@ -55,7 +55,14 @@ class Theme
      */
     private $user;
 
-
+    public function __construct()
+    {
+    	$this->logo 		= '';
+    	$this->slogan 		= '';
+    	$this->titre 		= '';
+    	$this->imageSlider 	= '';
+    }
+    
     /**
      * Get id
      *
@@ -156,13 +163,5 @@ class Theme
     public function getImageSlider()
     {
         return $this->imageSlider;
-    }
-    
-    public function __construct()
-    {
-    	$this->logo 		= '';
-    	$this->slogan 		= '';
-    	$this->titre 		= '';
-    	$this->imageSlider 	= '';
     }
 }

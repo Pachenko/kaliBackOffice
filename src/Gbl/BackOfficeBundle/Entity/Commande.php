@@ -169,13 +169,25 @@ class Commande
         return $this->pc;
     }
     
+    /**
+     * Get User
+     * 
+     * @return \Gbl\BackOfficeBundle\Entity\User
+     */
     public function getUser()
     {
     	return $this->user;
     }
     
+    /**
+     * Set User
+     * @param User $user
+     * @return User
+     */
     public function setUser($user)
     {
     	$this->user = $user;
+    	
+    	return $this;
     }
 }
