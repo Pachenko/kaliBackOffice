@@ -7,6 +7,13 @@ fos_user:
     firewall_name: main
     user_class: Gbl\BackOfficeBundle\Entity\User
 
+jms_serializer:
+    metadata:
+        directories:
+            FOSUB:
+                namespace_prefix: "FOS\\UserBundle"
+                path: "%kernel.root_dir%/serializer/FOSUserBundle"
+
 fos_rest:
     param_fetcher_listener: true
     body_listener: true

@@ -9,10 +9,9 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class UserRestController extends Controller
 {
   /**
-   * 
    * @param type $username
    * 
-   * @View(serializerGroups={"Default","Details"})
+   * @View(serializerGroups={"Default"})
    */
   public function getUserAction($username){
     $user = $this->getDoctrine()->getRepository('GblBackOfficeBundle:User')->findOneByUsername($username);
@@ -25,8 +24,7 @@ class UserRestController extends Controller
   }
   
   /**
-   * 
-   * @View(serializerGroups={"Default","Me","Details"})
+   * @View(serializerGroups={"Me","Details"})
    */
   public function getMeAction(){
     $this->forwardIfNotAuthenticated();
@@ -34,8 +32,8 @@ class UserRestController extends Controller
   }
 
   /**
-   * Shortcut to throw a AccessDeniedException($message) if the user is not authenticated
-   * @param String $message The message to display (default:'warn.user.notAuthenticated')
+   * Si l'utilisateur n'est pas authentifié
+   * @param String $message
    */
   protected function forwardIfNotAuthenticated($message='warn.user.notAuthenticated'){
     if (!is_object($this->getUser()))

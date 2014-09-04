@@ -9,7 +9,6 @@ use Symfony\Component\Validator\Constraints\Date;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * User
@@ -28,7 +27,6 @@ class User extends BaseUser
 	 * @ORM\Id
 	 * @ORM\Column(name="id", type="integer")
 	 * @ORM\GeneratedValue(strategy="AUTO")
-	 * @Expose
 	 */
 	protected $id;
 	
@@ -36,8 +34,6 @@ class User extends BaseUser
 	 * @var String
 	 * 
 	 * @ORM\Column(name="nom", type="string", length=255, nullable=true)
-	 * @Expose
-	 * @Groups({"Me"})
 	 */
 	protected $nom;
 	
@@ -45,7 +41,6 @@ class User extends BaseUser
 	 * @var String
 	 *
 	 * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
-	 * @Expose
 	 */
 	protected $prenom;
 	
@@ -53,7 +48,6 @@ class User extends BaseUser
 	 * @var String
 	 *
 	 * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
-	 * 
 	 */
 	protected $adresse;
 	
@@ -326,21 +320,5 @@ class User extends BaseUser
     public function getTelephonePortable()
     {
         return $this->telephonePortable;
-    }
-    
-    /**
-     * Get the formatted name to display (NAME Firstname or username)
-     *
-     * @param $separator: the separator between name and firstname (default: ' ')
-     * @return String
-     * @VirtualProperty
-     */
-    public function getUsedName($separator = ' '){
-    	if($this->getNom()!=null && $this->getPrenom()!=null){
-    		return ucfirst(strtolower($this->getPrenom())).$separator.strtoupper($this->getNom());
-    	}
-    	else{
-    		return $this->getUsername();
-    	}
     }
 }
