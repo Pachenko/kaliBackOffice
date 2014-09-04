@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Gbl\BackOfficeBundle\GblBackOfficeBundle(),
         	new FOS\UserBundle\FOSUserBundle(),
+        	new FOS\RestBundle\FOSRestBundle(),
+        	new JMS\SerializerBundle\JMSSerializerBundle(),
         	new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
         );
 

@@ -3,6 +3,7 @@ gbl_back_office:
     type:     annotation
     prefix:   /
 
+#FOSUserBundle
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -21,3 +22,9 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+#REST 
+rest : 
+  type : rest 
+  resource : "routing_rest.yml"
+  prefix : /api
