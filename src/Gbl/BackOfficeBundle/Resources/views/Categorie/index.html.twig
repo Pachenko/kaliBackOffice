@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+index - Categorie
+{% endblock %}
+
+{% block body %}
+<h2>Categorie</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>NOM</th>
+            <th>DESCRIPTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cat in categories %}
+        <tr>
+            <td>{{ cat.getId }}</td>
+            <td>{{ cat.getNom }}</td>
+            <td>{{ cat.getDescription }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -15,7 +15,10 @@ class CategorieController extends Controller
 	 */
 	public function indexAction()
 	{
-		return new Response("Hello World !");
+		$repository = $this->getDoctrine()->getManager()->getRepository('GblBackOfficeBundle:Categorie');
+		$listeCategories = $repository->findAll();
+		
+		return $this->render('GblBackOfficeBundle:Categorie:index.html.twig', array('categories' => $listeCategories));
 	}
 	
 	public function newAction()
