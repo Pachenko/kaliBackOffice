@@ -52,6 +52,13 @@ class Commande
      * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      */
     protected $user;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix", type="float")
+     */
+    private $prix;
 
     public function __construct() {
 
@@ -188,6 +195,28 @@ class Commande
     {
     	$this->user = $user;
     	
+    	return $this;
+    }
+    
+    /**
+     * Get Prix
+     *
+     * @return \Gbl\BackOfficeBundle\Entity\Prix
+     */
+    public function getPrix()
+    {
+    	return $this->prix;
+    }
+    
+    /**
+     * Set Prix
+     * @param Prix $prix
+     * @return Prix
+     */
+    public function setPrix($prix)
+    {
+    	$this->prix = $prix;
+    	 
     	return $this;
     }
 }
