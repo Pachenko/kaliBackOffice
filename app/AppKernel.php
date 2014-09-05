@@ -21,6 +21,7 @@ class AppKernel extends Kernel
         	new FOS\RestBundle\FOSRestBundle(),
         	new JMS\SerializerBundle\JMSSerializerBundle(),
         	new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+        	new Bmatzner\FontAwesomeBundle\BmatznerFontAwesomeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -4,36 +4,62 @@
  	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% block title %}{% endblock %}</title>
+	<title>{% block title %}{% endblock %} - Back Office</title>
 	
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.min.css') }}" />
     <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
     {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}    
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />    
-    <style type="text/css">
-    	body{
-        	padding-top: 60px;
-        }
-    </style>
     {% block stylesheets %}{% endblock %}
 </head>
     
     <body>
     
+<!-- Div globale -->
+    	<div id="wrapper">
+<!-- Navigation -->  
 		{% include 'menu.html.twig' %}
-	    
-	    <div class="container">
-        	<div class="row">
-                <!-- block body -->
-                {% block body %}
-
-                {% endblock %}
-            </div>
-        </div>
 		
-		{% include 'footer.html.twig' %}
+<!-- Div contenu globale -->
+		
+		<div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            {% block test %}{% endblock %}
+                        </h1>
+<!-- Div fil d'Ariane -->
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> Tables
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="row">
+                	<div class="col-lg-12">
+                    {% block body %}
+
+                	{% endblock %}
+                	</div>
+                </div>
+
+
         
+        </div>
+                
         <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
     	<script src="{{ asset('js/jquery.js') }}"></script>
     	<!-- Include all JavaScripts, compiled by Assetic -->
