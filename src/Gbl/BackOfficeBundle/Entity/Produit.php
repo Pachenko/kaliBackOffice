@@ -59,9 +59,9 @@ class Produit
     /**
      * @var float
      *
-     * @ORM\Column(name="volume", type="float")
+     * @ORM\Column(name="dimensions", type="float")
      */
-    private $volume;
+    private $dimensions;
 
     /**
      * @var integer
@@ -69,6 +69,27 @@ class Produit
      * @ORM\Column(name="stock", type="integer")
      */
     protected $stock;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="vente_flash", type="boolean")
+     */
+    protected $venteFlash;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="date")
+     */
+    private $created;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="date")
+     */
+    private $updated;
 
     /**
 	 * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="produits", cascade={"remove"})
@@ -80,15 +101,23 @@ class Produit
      * @ORM\OneToMany(targetEntity="ProduitCommande" , mappedBy="produits" , cascade={"all"})
      */
     protected $pc;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="image")
+     */
+    private $images;
 
     public function __construct()
     {
-    	$this->nom 		   = '';
-    	$this->description = '';
-    	$this->poids 	   = 0.0;
-    	$this->prix 	   = 0.0;
-    	$this->volume 	   = 0.0;
-    	$this->reference   = '';
+    	$this->nom 		   	= '';
+    	$this->reference   	= '';
+    	$this->description 	= '';
+    	$this->prix 	   	= 0.0;
+    	$this->poids 	   	= 0.0;    	
+    	$this->dimensions	= 0.0;
+    	$this->stock		= 0;
+    	$this->venteFlash	= false;
+    	$this->created		= new \DateTime();
     }
     
     /**
@@ -217,26 +246,26 @@ class Produit
     }
 
     /**
-     * Set volume
+     * Set dimensions
      *
-     * @param float $volume
+     * @param float $dimensions
      * @return Produit
      */
-    public function setVolume($volume)
+    public function setDimensions($dimensions)
     {
-        $this->volume = $volume;
+        $this->dimensions = $dimensions;
 
         return $this;
     }
 
     /**
-     * Get volume
+     * Get dimensions
      *
      * @return float 
      */
-    public function getVolume()
+    public function getDimensions()
     {
-        return $this->volume;
+        return $this->dimensions;
     }
 
     /**
@@ -299,22 +328,35 @@ class Produit
     }
 
     /**
-     * Remove pc
+     * Remove images
      *
-     * @param \Gbl\BackOfficeBundle\Entity\ProduitCommande $pc
+     * @param \Gbl\BackOfficeBundle\Entity\Image $images
      */
-    public function removePc(\Gbl\BackOfficeBundle\Entity\ProduitCommande $pc)
+    public function removeImages(\Gbl\BackOfficeBundle\Entity\Image $image)
     {
-        $this->pc->removeElement($pc);
+        $this->images->removeElement($images);
     }
 
     /**
-     * Get pc
+     * Get images
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPc()
+    public function getImages()
     {
-        return $this->pc;
+        return $this->images;
+    }
+    
+    /**
+     * Add images
+     *
+     * @param \Gbl\BackOfficeBundle\Entity\Image $images
+     * @return Produit
+     */
+    public function addImages(\Gbl\BackOfficeBundle\Entity\Image $images)
+    {
+    	$this->images[] = $images;
+    
+    	return $this;
     }
 }

@@ -1,0 +1,65 @@
+{# https://github.com/symfony/symfony/blob/2.3/src/Symfony/Bridge/Twig/Resources/views/Form/form_div_layout.html.twig #}
+
+{% block form_row %}
+{% set help = attr['help']|default(null) %}
+<div class="row">
+    <div class="form-group col-xs-5">
+        <label class="control-label" style="color: #6d6">{{ form_label(form) }}</label>
+        <div class="controls">
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            {% if help is defined %}
+                <span class="help-inline">{{ help }}</span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock form_row %}
+
+{% block form_label %}
+{% spaceless %}
+    {% if label is not sameas(false) %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }} :</label>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_label %}
+
+
+{% block form_widget_simple %}
+{% spaceless %}
+{% set type = type|default('text') %}
+
+{% if type == 'file' %}
+    <input class="form-control" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} />
+    {% if web_path is defined %}
+        <p><img src="{{ web_path }}" alt="{{ value }}" style="max-width: 150px;max-height: 100px;"></p>
+    {% endif %}
+{% else %}
+    <input class="form-control" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} />
+{% endif %}
+
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
+
+{% block field_errors %}
+{% spaceless %}
+{% if errors|length > 0 %}
+<div class="error">
+{% for error in errors %}
+<div>{{ error.messageTemplate|trans(error.messageParameters, 'validators') }}</div>
+{% endfor %}
+</div>
+<br>
+{% endif %}
+{% endspaceless %}
+{% endblock field_errors %}

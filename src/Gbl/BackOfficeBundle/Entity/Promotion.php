@@ -5,12 +5,12 @@ namespace Gbl\BackOfficeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Transporteur
+ * Promotion
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Repository\TransporteurRepository")
+ * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Entity\PromotionRepository")
  */
-class Transporteur
+class Promotion
 {
     /**
      * @var integer
@@ -24,19 +24,29 @@ class Transporteur
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="code", type="string", length=255)
      */
-    private $nom;
+    private $code;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDebut", type="datetime")
+     */
+    private $dateDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateFin", type="datetime")
+     */
+    private $dateFin;
     
     /**
      * @ORM\OneToMany(targetEntity="Commande", mappedBy="transporteur")
      */
     protected $commandes;
 
-    public function __construct()
-    {
-    	$this->nom    = '';
-    }
 
     /**
      * Get id
@@ -49,33 +59,79 @@ class Transporteur
     }
 
     /**
-     * Set nom
+     * Set code
      *
-     * @param string $nom
-     * @return Transporteur
+     * @param string $code
+     * @return Promotion
      */
-    public function setNom($nom)
+    public function setCode($code)
     {
-        $this->nom = $nom;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get code
      *
      * @return string 
      */
-    public function getNom()
+    public function getCode()
     {
-        return $this->nom;
+        return $this->code;
+    }
+
+    /**
+     * Set dateDebut
+     *
+     * @param \DateTime $dateDebut
+     * @return Promotion
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDebut
+     *
+     * @return \DateTime 
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     * @return Promotion
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return \DateTime 
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
     }
     
     /**
      * Add commandes
      *
      * @param \Gbl\BackOfficeBundle\Entity\Commande $commandes
-     * @return Transporteur
+     * @return Promotion
      */
     public function addCommande(\Gbl\BackOfficeBundle\Entity\Commande $commandes)
     {
@@ -103,5 +159,4 @@ class Transporteur
     {
     	return $this->commandes;
     }
-    
 }

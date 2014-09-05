@@ -36,7 +36,7 @@ class Categorie
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="Produit", mappedBy="categorie", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="Produit", mappedBy="categorie")
      */
     protected $produits;
     
@@ -136,13 +136,4 @@ class Categorie
         return $this->produits;
     }
     
-    /**
-     * Set Produit
-     * 
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function setProduits(\Doctrine\Common\Collections\Collection $produits)
-    {
-    	$this->produits = $produits;
-    }
 }

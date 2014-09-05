@@ -27,6 +27,20 @@ class Commande
      * @ORM\Column(name="numero", type="string", length=255)
      */
     private $numero;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=255)
+     */
+    private $statut;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix", type="float")
+     */
+    private $prix;
 
     /**
      * @var \DateTime
@@ -34,13 +48,13 @@ class Commande
      * @ORM\Column(name="date", type="date")
      */
     private $date;
-
+    
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="statut", type="string", length=255)
+     * @ORM\Column(name="date_paiement", type="date")
      */
-    private $statut;
+    private $datePaiement;    
 
 	/**
      * @ORM\OneToMany(targetEntity="ProduitCommande" , mappedBy="commandes" , cascade={"all"})
@@ -54,11 +68,16 @@ class Commande
     protected $user;
     
     /**
-     * @var float
-     *
-     * @ORM\Column(name="prix", type="float")
+     * @ORM\ManyToOne(targetEntity="Transporteur", inversedBy="type")
+     * @ORM\JoinColumn(name="id_transporteur", referencedColumnName="id")
      */
-    private $prix;
+    protected $transporteur;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Promotion", inversedBy="type")
+     * @ORM\JoinColumn(name="id_promotion", referencedColumnName="id")
+     */
+    protected $promotion;
 
     public function __construct() {
 
@@ -96,6 +115,61 @@ class Commande
     {
         return $this->numero;
     }
+    
+    /**
+     * Set statut
+     *
+     * @param string $statut
+     * @return Commande
+     */
+    public function setStatut($statut)
+    {
+    	$this->statut = $statut;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get statut
+     *
+     * @return string
+     */
+    public function getStatut()
+    {
+    	return $this->statut;
+    }
+    
+    /**
+     * Get Prix
+     *
+     * @return \Gbl\BackOfficeBundle\Entity\Prix
+     */
+    public function getPrix()
+    {
+    	return $this->prix;
+    }
+    
+    /**
+     * Set Prix
+     * @param Prix $prix
+     * @return Prix
+     */
+    public function setPrix($prix)
+    {
+    	$this->prix = $prix;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+    	return $this->date;
+    }
 
     /**
      * Set date
@@ -111,37 +185,27 @@ class Commande
     }
 
     /**
-     * Get date
+     * Get datePaiement
      *
      * @return \DateTime 
      */
-    public function getDate()
+    public function getDatePaiement()
     {
-        return $this->date;
+        return $this->datePaiement;
     }
-
+    
     /**
-     * Set statut
+     * Set datePaiement
      *
-     * @param string $statut
+     * @param \DateTime $datePaiement
      * @return Commande
      */
-    public function setStatut($statut)
+    public function setDatePaiement($datePaiement)
     {
-        $this->statut = $statut;
-
-        return $this;
-    }
-
-    /**
-     * Get statut
-     *
-     * @return string 
-     */
-    public function getStatut()
-    {
-        return $this->statut;
-    }
+    	$this->datePaiement = $datePaiement;
+    
+    	return $this;
+    }    
 
     /**
      * Add pc
@@ -199,24 +263,47 @@ class Commande
     }
     
     /**
-     * Get Prix
+     * Get Transporteur
      *
-     * @return \Gbl\BackOfficeBundle\Entity\Prix
+     * @return \Gbl\BackOfficeBundle\Entity\Transporteur
      */
-    public function getPrix()
+    public function getTransporteur()
     {
-    	return $this->prix;
+    	return $this->transporteur;
     }
     
     /**
-     * Set Prix
-     * @param Prix $prix
-     * @return Prix
+     * Set Transporteur
+     * @param Transporteur $transporteur
+     * @return Transporteur
      */
-    public function setPrix($prix)
+    public function setTransporteur($transporteur)
     {
-    	$this->prix = $prix;
+    	$this->transporteur = $transporteur;
     	 
     	return $this;
     }
+    
+    /**
+     * Get Promotion
+     *
+     * @return \Gbl\BackOfficeBundle\Entity\Promotion
+     */
+    public function getPromotion()
+    {
+    	return $this->promotion;
+    }
+    
+    /**
+     * Set Promotion
+     * @param Promotion $promotion
+     * @return Promotion
+     */
+    public function setPromotion($promotion)
+    {
+    	$this->promotion = $promotion;
+    
+    	return $this;
+    }
+    
 }
