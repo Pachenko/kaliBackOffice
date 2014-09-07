@@ -4,13 +4,25 @@
 index - Categorie
 {% endblock %}
 
-{% block test %}
+{% block h1 %}
 Categorie
+{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+	<li>
+		<i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+	</li>
+	<li class="active">
+		<i class="fa fa-table"></i> Catégorie
+	</li>
+</ol>
 {% endblock %}
 
 {% block body %}
 <div class="col-lg-12">
-	<h2>Categorie</h2>
+<button class="btn">Ajouter une categorie <i class="fa fa-fw fa-plus"></i></button>
+	<h2>Liste des Categories</h2>
 	<div class="table-responsive">
 		<table class="table table-bordered table-hover table-striped">
 		    <thead>
@@ -26,6 +38,8 @@ Categorie
 		            <td>{{ cat.getId }}</td>
 		            <td>{{ cat.getNom }}</td>
 		            <td>{{ cat.getDescription }}</td>
+		            <td><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /> 
+		            <img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></td>
 		        </tr>
 		        {% endfor %}
 		    </tbody>

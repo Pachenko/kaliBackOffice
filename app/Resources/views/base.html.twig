@@ -34,17 +34,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            {% block test %}{% endblock %}
+                            {% block h1 %}{% endblock %}
                         </h1>
 <!-- Div fil d'Ariane -->
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-table"></i> Tables
-                            </li>
-                        </ol>
+						{% block breadcrumb %}{% endblock %}
+                        
                     </div>
                 </div>
                 
@@ -53,7 +47,7 @@
                     {% block body %}
 
                 	{% endblock %}
-                	</div>
+
                 </div>
 
 
