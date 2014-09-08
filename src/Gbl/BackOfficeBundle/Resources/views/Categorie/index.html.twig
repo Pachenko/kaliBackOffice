@@ -21,7 +21,17 @@ Categorie
 
 {% block body %}
 <div class="col-lg-12">
-<button class="btn">Ajouter une categorie <i class="fa fa-fw fa-plus"></i></button>
+<a href="{{ path('categorie.new') }}" class="btn btn-success">Ajouter une categorie <i class="fa fa-fw fa-plus"></i></a>
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<br /><br />
+    <div class="alert alert-success">
+    	<a href="#" class="close" data-dismiss="alert">&times;</a>
+        <p><img width="20" height="20" src="{{ asset('img/icons/ok.png') }}" alt="success" />  {{ flashMessage }}</p>
+    </div>
+    
+{% endfor %}
+
 	<h2>Liste des Categories</h2>
 	<div class="table-responsive">
 		<table class="table table-bordered table-hover table-striped">
@@ -38,8 +48,8 @@ Categorie
 		            <td>{{ cat.getId }}</td>
 		            <td>{{ cat.getNom }}</td>
 		            <td>{{ cat.getDescription }}</td>
-		            <td><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /> 
-		            <img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></td>
+		            <td><a href="{{ path('categorie.edit', { 'id': cat.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a> 
+		            <a href="{{ path('categorie.delete', { 'id': cat.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
 		        </tr>
 		        {% endfor %}
 		    </tbody>

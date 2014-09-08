@@ -10,7 +10,7 @@ ajouter - Categorie
 {% endblock %}
 
 {% block h1 %}
-Ajouter une catégorie
+Catégorie
 {% endblock %}
 
 {% block breadcrumb %}
@@ -19,11 +19,11 @@ Ajouter une catégorie
 		<i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
 	</li>
 	<li>
-		<i class="fa fa-table"></i> <a href="index">Catégorie</a>
+		<i class="fa fa-table"></i> <a href="{{ path('categorie.index') }}">Catégorie</a>
 	</li>
 	
 	<li class="active">
-		<i class="fa fa-fw fa-plus"></i> Ajouter
+		<i class="fa fa-fw fa-plus"></i> Update
 	</li>
 </ol>
 {% endblock %}

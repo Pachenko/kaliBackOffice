@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\Date;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -34,6 +35,14 @@ class User extends BaseUser
 	 * @var String
 	 * 
 	 * @ORM\Column(name="nom", type="string", length=255, nullable=true)
+	 * @Assert\NotBlank(message="Merci de rentrer votre nom", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max="20",
+     *     minMessage="Le nom est trop court",
+     *     maxMessage="Le nom est trop long",
+     *     groups={"Registration", "Profile"}
+     * )
 	 */
 	protected $nom;
 	
