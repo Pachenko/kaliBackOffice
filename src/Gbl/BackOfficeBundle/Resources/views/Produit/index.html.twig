@@ -51,7 +51,7 @@ Produit
 		    <tbody>
 		        {% for prod in produits %}
 		        <tr>
-		            <td>{{ prod.getId }}</td>
+		            <td><img heigth="50px" width="50px" src="{{ asset('uploads/' ~ prod.getFileImg)}}" alt="{{ prod.getNom }}" /></td>
 		            <td>{{ prod.getNom }}</td>
 		            <td>{{ prod.getReference }}</td>
 		            <td>{{ prod.getDescription }}</td>

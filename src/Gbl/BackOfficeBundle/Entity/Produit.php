@@ -8,11 +8,13 @@ use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\VirtualProperty;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Produit
  *
- * @ORM\Table()
+ * @ORM\Table(name="produit")
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Repository\ProduitRepository")
  * 
  * @ExclusionPolicy("all") 
@@ -114,22 +116,15 @@ class Produit
     protected $pc;
     
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="image")
+     * @var string
+     *
+     * @ORM\Column(name="file_img", type="string", length=255, nullable=true)
      */
-    private $images;
+    private $fileImg;
 
     public function __construct()
     {
-    	$this->nom 		   	= '';
-    	$this->reference   	= '';
-    	$this->description 	= '';
-    	$this->prix 	   	= 0.0;
-    	$this->poids 	   	= 0.0;    	
-    	$this->dimensions	= '';
-    	$this->stock		= 0;
-    	$this->venteFlash	= false;
-    	$this->created		= new \DateTime();
-    	$this->images		= new ArrayCollection();
+    	$this->created = new \DateTime();
     }
     
     /**
@@ -329,10 +324,10 @@ class Produit
     /**
      * Set categorie
      *
-     * @param \Gbl\BackOfficeBundle\Entity\Categorie $categorie
+     * @param Categorie $categorie
      * @return Produit
      */
-    public function setCategorie(\Gbl\BackOfficeBundle\Entity\Categorie $categorie = null)
+    public function setCategorie(Categorie $categorie = null)
     {
         $this->categorie = $categorie;
 
@@ -342,7 +337,7 @@ class Produit
     /**
      * Get categorie
      *
-     * @return \Gbl\BackOfficeBundle\Entity\Categorie 
+     * @return Categorie 
      */
     public function getCategorie()
     {
@@ -352,7 +347,7 @@ class Produit
     /**
      * Add pc
      *
-     * @param \Gbl\BackOfficeBundle\Entity\ProduitCommande $pc
+     * @param ProduitCommande $pc
      * @return Produit
      */
     public function addPc(\Gbl\BackOfficeBundle\Entity\ProduitCommande $pc)
@@ -363,35 +358,82 @@ class Produit
     }
 
     /**
-     * Remove images
+     * Set fileImg
      *
-     * @param \Gbl\BackOfficeBundle\Entity\Image $images
+     * @param string $fileImg
+     * @return Produit
      */
-    public function removeImages(\Gbl\BackOfficeBundle\Entity\Image $image)
+    public function setFileImg($fileImg)
     {
-        $this->images->removeElement($images);
+        $this->fileImg = $fileImg;
+
+        return $this;
     }
 
     /**
-     * Get images
+     * Get fileImg
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return string 
      */
-    public function getImages()
+    public function getFileImg()
     {
-        return $this->images;
+        return $this->fileImg;
     }
     
-    /**
-     * Add images
-     *
-     * @param \Gbl\BackOfficeBundle\Entity\Image $images
-     * @return Produit
-     */
-    public function addImages(\Gbl\BackOfficeBundle\Entity\Image $images)
-    {
-    	$this->images[] = $images;
+	public function getFileImgUpload() {
+        return $this->fileImgUpload;
+    }
+
+    public function setFileImgUpload($fileImgUpload) {
+        $this->fileImgUpload = $fileImgUpload;
+    }
     
-    	return $this;
+	/**
+    * @Assert\File(maxSize="6000000")
+    */
+    protected $fileImgUpload;
+
+    public function getAbsoluteFileImg()
+    {
+        return null === $this->fileImg ? null : $this->getUploadRootDir() . '/' . $this->fileImg;
+    }
+
+    public function getWebFileImg()
+    {
+        return null === $this->fileImg ? null : $this->getUploadDir() . '/' . $this->fileImg;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads';
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if(null !== $this->fileImgUpload) {
+            $this->fileImg = 'file_img_' . sha1(uniqid(mt_rand(), true)) . '.' . $this->fileImgUpload->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function uploadFiles()
+    {
+        if(null !== $this->fileImgUpload) {
+            $this->fileImgUpload->move($this->getUploadRootDir(), $this->fileImg);
+
+            unset($this->fileImgUpload);
+        }
     }
 }

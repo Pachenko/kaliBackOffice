@@ -38,6 +38,7 @@ class ProduitType extends AbstractType
         		'multiple' => false,
         		'property' => 'nom',
         ));
+        $builder->add('fileImgUpload','file');
         
         $builder->add('Enregistrer', 'submit');
     }
