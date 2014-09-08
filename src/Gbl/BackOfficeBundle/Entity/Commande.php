@@ -3,12 +3,18 @@
 namespace Gbl\BackOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Commande
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Repository\CommandeRepository")
+ * 
+ * @ExclusionPolicy("all") 
  */
 class Commande
 {
@@ -18,6 +24,8 @@ class Commande
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $id;
 
@@ -25,6 +33,8 @@ class Commande
      * @var string
      *
      * @ORM\Column(name="numero", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $numero;
     
