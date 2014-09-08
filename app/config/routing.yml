@@ -28,3 +28,8 @@ rest :
   type : rest 
   resource : "routing_rest.yml"
   prefix : /api
+
+#USER  
+adduser:
+    pattern:  /adduser
+    defaults: { _controller: GblBackOfficeBundle:User:add }
