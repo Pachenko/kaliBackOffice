@@ -23,4 +23,16 @@ class CommandeRestController extends Controller
 	
 		return $commande;
 	}
+	
+	/**
+	 * Permet de récupérer toutes les commandes
+	 *
+	 * @View(serializerGroups={"Default"})
+	 */
+	public function getCommandesAction(){
+	
+		$commandes = $this->getDoctrine()->getRepository('GblBackOfficeBundle:Commande')->findAll();
+	
+		return $commandes;
+	}
 }

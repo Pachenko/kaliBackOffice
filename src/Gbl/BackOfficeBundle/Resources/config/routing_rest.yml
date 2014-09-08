@@ -15,6 +15,5 @@ categories:
     
 commandes:
     type: rest
-    parent: users
     resource: "GblBackOfficeBundle:CommandeRest"
     name_prefix: api_
