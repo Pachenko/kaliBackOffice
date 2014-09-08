@@ -120,10 +120,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#produit"><i class="fa fa-fw fa-shopping-cart"></i> Gestion Produits <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="produit" class="collapse">
                             <li>
-                                <a href="#">Liste produits</a>
+                                <a href="{{ path('produit.index') }}">Produits</a>
                             </li>
                             <li>
-                                <a href="#">Création produit</a>
+                                <a href="{{ path('produit.new') }}">Créer produit</a>
                             </li>
                             <li>
                                 <a href="#">Vente privée</a>
@@ -134,10 +134,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#categorie"><i class="fa fa-fw fa-archive"></i> Gestion Categories <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="categorie" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="{{ path('categorie.index') }}">Catégories</a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="{{ path('categorie.new') }}">Créer catégorie</a>
                             </li>
                         </ul>
                     </li>
@@ -145,10 +145,13 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#promotion"><i class="fa fa-fw fa-barcode"></i> Gestion Promotion <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="promotion" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Promotions</a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Créer promotion</a>
+                            </li>
+                            <li>
+                                <a href="#">Promotions expirées</a>
                             </li>
                         </ul>
                     </li>
@@ -156,10 +159,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#client"><i class="fa fa-fw fa-male"></i> Gestion Clients <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="client" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Clients</a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Exportation</a>
                             </li>
                         </ul>
                     </li>
@@ -178,10 +181,13 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#theme"><i class="fa fa-fw fa-image"></i> Gestion Thèmes <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="theme" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Transporteurs</a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Créer transporteur</a>
+                            </li>
+                            <li>
+                                <a href="#">Configuration</a>
                             </li>
                         </ul>
                     </li>
@@ -189,10 +195,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#utilisateur"><i class="fa fa-fw fa-users"></i> Gestion Utilisateurs <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="utilisateur" class="collapse">
                         	<li>
-                                <li><a href="{{ path('user.index') }}">liste des Utilisateurs</a></li>
+                                <a href="{{ path('user.index') }}">liste des Utilisateurs</a>
                             </li>
                             <li>
-                                <li><a href="{{ path('user.new') }}">Ajouter un Utilisateur</a></li>
+                                <a href="{{ path('user.new') }}">Ajouter un Utilisateur</a>
                             </li>
                         </ul>
                     </li>
