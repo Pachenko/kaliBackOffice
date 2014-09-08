@@ -11,6 +11,7 @@ class CommandeController extends Controller
 {
 	/**
 	 * @Route("/commandes/liste/{page}", name="commandes.liste")
+	 * @Route("/commandes/liste/", defaults={"page" = 1})
 	 * @Template()
 	 */
 	public function commandeAction($page)
