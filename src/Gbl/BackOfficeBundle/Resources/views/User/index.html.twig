@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+index - Categorie
+{% endblock %}
+
+{% block h1 %}
+Categorie
+{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+	<li>
+		<i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+	</li>
+	<li class="active">
+		<i class="fa fa-table"></i> Utilisateur
+	</li>
+</ol>
+{% endblock %}
+
+{% block body %}
+<div class="col-lg-12">
+<a href="{{ path('user.new') }}" class="btn btn-success">Ajouter un utilisateurs <i class="fa fa-fw fa-plus"></i></a>
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<br /><br />
+    <div class="alert alert-success">
+    	<a href="#" class="close" data-dismiss="alert">&times;</a>
+        <p><img width="20" height="20" src="{{ asset('img/icons/ok.png') }}" alt="success" />  {{ flashMessage }}</p>
+    </div>
+    
+{% endfor %}
+
+	<h2>Liste des Utilisateurs</h2>
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover table-striped">
+		    <thead>
+		        <tr>
+		            <th>#</th>
+		            <th>NOM</th>
+		            <th>PRENOM</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        {% for user in users %}
+		        <tr>
+		            <td>{{ user.getId }}</td>
+		            <td>{{ user.getNom }}</td>
+		            <td>{{ user.getPrenom }}</td>
+		            <td><a href="{{ path('user.edit', { 'id': user.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a> 
+		            <a href="{{ path('user.delete', { 'id': user.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
+		        </tr>
+		        {% endfor %}
+		    </tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

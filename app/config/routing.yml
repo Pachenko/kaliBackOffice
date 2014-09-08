@@ -29,7 +29,19 @@ rest :
   resource : "routing_rest.yml"
   prefix : /api
 
-#USER  
-adduser:
-    pattern:  /user/add
-    defaults: { _controller: GblBackOfficeBundle:User:add }
+#USER 
+user.index:
+    pattern:  /user/new
+    defaults: { _controller: GblBackOfficeBundle:User:index }
+ 
+user.new:
+    pattern:  /user/new
+    defaults: { _controller: GblBackOfficeBundle:User:new }
+    
+user.edit:
+    pattern:  /user/edit/{id}
+    defaults: { _controller: GblBackOfficeBundle:User:edit }
+    
+user.delete:
+    pattern:  /user/delete/{id}
+    defaults: { _controller: GblBackOfficeBundle:User:delete }
