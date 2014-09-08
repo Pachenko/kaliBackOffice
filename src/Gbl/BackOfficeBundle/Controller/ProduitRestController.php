@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class ProduitRestController extends Controller
 {
 	/**
+	 * Permet de récupérer un produit
 	 *
 	 * @View(serializerGroups={"Default"})
 	 */
@@ -18,6 +19,17 @@ class ProduitRestController extends Controller
 		if(!is_object($produits)){
 			throw $this->createNotFoundException();
 		}
+	
+		return $produits;
+	}
+	
+	/**
+	 * Permet de récupérer tous les produits
+	 *
+	 * @View(serializerGroups={"Default"})
+	 */
+	public function getProduitsAction(){
+		$produits = $this->getDoctrine()->getRepository('GblBackOfficeBundle:Produit')->findAll();
 	
 		return $produits;
 	}
