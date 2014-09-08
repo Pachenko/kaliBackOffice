@@ -15,7 +15,7 @@ class UserController extends Controller
 	}
 	
 	/**
-	 * @Route("/adduser")
+	 * @Route("/user/add")
 	 */
 	public function addAction()
 	{
@@ -26,6 +26,9 @@ class UserController extends Controller
 		$formBuilder
 			->add('nom', 				'text')
 			->add('prenom',				'text')
+			->add('username',			'text')
+			->add('password',			'password')
+			->add('email',				'email')
 			->add('adresse',			'text')
 			->add('ville',				'text')
 			->add('codePostal',			'text')
@@ -35,6 +38,20 @@ class UserController extends Controller
 			->add('telephonePortable',	'integer');
 		
 		$form = $formBuilder->getForm();
+		
+		$request = $this->get('request');
+	
+		if ($request->getMethod() == 'POST'){
+			$form->bind($request);
+			if($form->isValid()){
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($user);
+				$em->flush();
+				
+				return $this->render('GblBackOfficeBundle:User:add.html.twig',array(
+						'form' => $form->createView(),));
+			}
+		}
 				
 		return $this->render('GblBackOfficeBundle:User:add.html.twig',array(
     'form' => $form->createView(),));

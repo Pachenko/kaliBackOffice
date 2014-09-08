@@ -31,5 +31,5 @@ rest :
 
 #USER  
 adduser:
-    pattern:  /adduser
+    pattern:  /user/add
     defaults: { _controller: GblBackOfficeBundle:User:add }
