@@ -17,3 +17,13 @@ commandes:
     type: rest
     resource: "GblBackOfficeBundle:CommandeRest"
     name_prefix: api_
+
+themes:
+    type: rest
+    resource: "GblBackOfficeBundle:ThemeRest"
+    name_prefix: api_
+
+transporteurs:
+    type: rest
+    resource: "GblBackOfficeBundle:TransporteurRest"
+    name_prefix: api_

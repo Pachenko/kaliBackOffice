@@ -3,12 +3,18 @@
 namespace Gbl\BackOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Theme
  *
  * @ORM\Table(name="theme")
  * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Repository\ThemeRepository")
+ * 
+ * @ExclusionPolicy("all") 
  */
 class Theme
 {
@@ -18,6 +24,8 @@ class Theme
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $id;
 
@@ -25,6 +33,8 @@ class Theme
      * @var string
      *
      * @ORM\Column(name="logo", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $logo;
 
@@ -32,6 +42,8 @@ class Theme
      * @var string
      *
      * @ORM\Column(name="slogan", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $slogan;
 
@@ -39,6 +51,8 @@ class Theme
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $titre;
 
@@ -46,6 +60,8 @@ class Theme
      * @var string
      *
      * @ORM\Column(name="image_slider", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $imageSlider;
     

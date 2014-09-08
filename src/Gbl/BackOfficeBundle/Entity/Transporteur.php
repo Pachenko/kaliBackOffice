@@ -3,12 +3,18 @@
 namespace Gbl\BackOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Transporteur
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Repository\TransporteurRepository")
+ * 
+ * @ExclusionPolicy("all") 
  */
 class Transporteur
 {
@@ -18,6 +24,8 @@ class Transporteur
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $id;
 
@@ -25,11 +33,15 @@ class Transporteur
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $nom;
     
     /**
      * @ORM\OneToMany(targetEntity="Commande", mappedBy="transporteur")
+     * @Expose
+     * @Groups({"Default"})
      */
     protected $commandes;
 

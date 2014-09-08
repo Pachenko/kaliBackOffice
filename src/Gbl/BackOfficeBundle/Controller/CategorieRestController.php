@@ -20,8 +20,7 @@ class CategorieRestController extends Controller
 			throw $this->createNotFoundException();
 		}
 	
-		return $categories;
-	
+		return $categories;	
 	}
 	
 	/**
