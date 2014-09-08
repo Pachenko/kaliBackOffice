@@ -24,7 +24,7 @@ class UserController extends Controller
 	/**
 	 * @Route("/user/new")
 	 */
-	public function newaddAction()
+	public function newAction()
 	{
 		$user = new User();
 		
@@ -38,9 +38,12 @@ class UserController extends Controller
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($user);
 				$em->flush();
+				$this->get('session')->getFlashBag()->add(
+						'notice',
+						'Utilisateur Ajouté'
+				);
 				
-				return $this->render('GblBackOfficeBundle:User:new.html.twig',array(
-						'form' => $form->createView(),));
+				return $this->redirect($this->generateUrl('user.index'));
 			}
 		}
 				

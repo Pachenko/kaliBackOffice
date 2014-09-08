@@ -31,7 +31,7 @@ rest :
 
 #USER 
 user.index:
-    pattern:  /user/new
+    pattern:  /user/index
     defaults: { _controller: GblBackOfficeBundle:User:index }
  
 user.new:
