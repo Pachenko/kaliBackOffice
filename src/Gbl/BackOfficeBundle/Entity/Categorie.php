@@ -36,7 +36,7 @@ class Categorie
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="Produit", mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity="Produit", mappedBy="categorie", cascade={"remove"})
      */
     protected $produits;
     
