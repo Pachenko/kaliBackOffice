@@ -3,12 +3,18 @@
 namespace Gbl\BackOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Categorie
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Repository\CategorieRepository")
+ * 
+ * @ExclusionPolicy("all") 
  */
 class Categorie
 {
@@ -18,6 +24,8 @@ class Categorie
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $id;
 
@@ -25,6 +33,8 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $nom;
 
@@ -32,11 +42,15 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $description;
 
     /**
      * @ORM\OneToMany(targetEntity="Produit", mappedBy="categorie")
+     * @Expose
+     * @Groups({"Default"})
      */
     protected $produits;
     
