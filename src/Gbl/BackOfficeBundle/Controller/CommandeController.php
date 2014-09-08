@@ -18,13 +18,22 @@ class CommandeController extends Controller
 		$maxCommandes = $this->container->getParameter('max_commandes_per_page');
 		
 		$commandes_count = $this->get('gbl.commande_manager')
-								->loadCommande();
-		var_dump($commandes_count); die();
+								->count();
 		
-	    if (!$commandes = $this->get('gbl.commande_manager')->loadCommande()) {
+		$pagination = array(
+			'page' 		   => $page,
+			'route' 	   => 'commandes.liste',
+			'pages_count'  => ceil($commandes_count / $maxCommandes),
+			'route_params' => array()
+		);
+		
+	    if (!$commandes = $this->get('gbl.commande_manager')->getList($page, $maxCommandes)) {
 	        throw new NotFoundHttpException($this->get('translator')->trans('Il n\'y a pas de commande'));
 	    }
 	    
-	    return array('commandes' => $commandes);
+	    return array(
+	    	'commandes'  => $commandes,
+	    	'pagination' => $pagination,
+	    );
 	}
 }

@@ -22,11 +22,20 @@ class CommandeManager extends BaseManager
 					->findAll();
 	}
 	
+	public function count()
+	{
+		return  $this->getRepository()
+			->createQueryBuilder('id')
+			->select('COUNT(id)')
+			->getQuery()
+			->getSingleScalarResult();
+	}
+	
 	public function getList($page = 1, $maxperpage = 10)
 	{
 		$q = $this->em->createQueryBuilder()
             	  ->select('commande')
-            	  ->from('GblBackOfficeBundle:Commande','commandes');
+            	  ->from('GblBackOfficeBundle:Commande','commande');
 		$q->setFirstResult(($page-1) * $maxperpage)
 		  ->setMaxResults($maxperpage);
 		
