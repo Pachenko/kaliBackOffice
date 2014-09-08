@@ -1,0 +1,65 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+index - Commandes
+{% endblock %}
+
+{% block h1 %}
+Commandes
+{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+	<li>
+		<i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+	</li>
+	<li class="active">
+		<i class="fa fa-table"></i> Commandes
+	</li>
+</ol>
+{% endblock %}
+
+{% block body %}
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+		<br /><br />
+	    <div class="alert alert-success">
+	    	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	        <p><img width="20" height="20" src="{{ asset('img/icons/ok.png') }}" alt="success" />  {{ flashMessage }}</p>
+	    </div>
+	{% endfor %}
+
+
+<h2>Liste des Commandes</h2>
+<div class="table-responsive">
+	<table class="table table-bordered table-hover table-striped">
+	    <thead>
+	        <tr>
+	            <th>#</th>
+	            <th>NUMERO</th>
+	            <th>DATE</th>
+	            <th>STATUT</th>
+	            <th>UTILISATEUR</th>
+	            <th>TRANSPORTEUR</th>
+	            <th>PROMOTION</th>
+	            <th>PRIX</th>
+	            <th>DATE PAIEMENT</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        {% for commande in commandes %}
+		        <tr>
+		            <td>{{ commande.getId }}</td>
+		            <td>{{ commande.getNumero }}</td>
+		            <td>{{ commande.getDate|date('Y-m-d') }}</td>
+		            <td>{{ commande.getStatut }}</td>
+		            <td>{{ commande.getUser.getUsername }}</td>
+		            <td>{{ commande.getTransporteur.getNom }}</td>
+		            <td>{{ commande.getPromotion.getCode }}</td>
+		            <td>{{ commande.getPrix }}</td>
+		            <td>{{ commande.getDatePaiement|date('Y-m-d') }}</td>
+		        </tr>
+	        {% endfor %}
+	    </tbody>
+	</table>
+</div>
+{% endblock %}
