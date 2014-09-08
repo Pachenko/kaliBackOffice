@@ -7,3 +7,13 @@ produits:
     type:     rest
     resource: "GblBackOfficeBundle:ProduitRest"
     name_prefix:  api_
+    
+categories:
+    type: rest
+    resource: "GblBackOfficeBundle:CategorieRest"
+    name_prefix: api_
+    
+commandes:
+    type: rest
+    resource: "GblBackOfficeBundle:CommandeRest"
+    name_prefix: api_

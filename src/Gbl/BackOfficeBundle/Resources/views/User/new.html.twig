@@ -1,7 +1,8 @@
 {% extends '::base.html.twig' %}
+{% form_theme form '::fields.html.twig' %}
 
 {% block title %}
-    Test Bootstrap
+    Ajout Utilisateur
 {% endblock %}
 
 {% block body %}
@@ -11,8 +12,11 @@
 
   <form method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <input type="submit" class="btn btn-primary" />
   </form>
 
 	
+{% endblock %}
+
+{% block javascripts %}
+{#<script src="{{ asset('js/jquery-ui.min.js') }}" type="text/javascript"></script>#}
 {% endblock %}

@@ -7,6 +7,7 @@ use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\VirtualProperty;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Produit
@@ -48,7 +49,7 @@ class Produit
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
@@ -69,14 +70,14 @@ class Produit
     /**
      * @var float
      *
-     * @ORM\Column(name="dimensions", type="float")
+     * @ORM\Column(name="dimensions", type="string")
      */
     private $dimensions;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="stock", type="integer")
+     * @ORM\Column(name="stock", type="string")
      */
     protected $stock;
     
@@ -97,12 +98,12 @@ class Produit
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated", type="date")
+     * @ORM\Column(name="updated", type="date", nullable=true)
      */
     private $updated;
 
     /**
-	 * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="produits", cascade={"remove"})
+	 * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="produits")
 	 * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id")
      */
     private $categorie;
@@ -124,10 +125,11 @@ class Produit
     	$this->description 	= '';
     	$this->prix 	   	= 0.0;
     	$this->poids 	   	= 0.0;    	
-    	$this->dimensions	= 0.0;
+    	$this->dimensions	= '';
     	$this->stock		= 0;
     	$this->venteFlash	= false;
     	$this->created		= new \DateTime();
+    	$this->images		= new ArrayCollection();
     }
     
     /**
@@ -258,7 +260,7 @@ class Produit
     /**
      * Set dimensions
      *
-     * @param float $dimensions
+     * @param string $dimensions
      * @return Produit
      */
     public function setDimensions($dimensions)
@@ -271,7 +273,7 @@ class Produit
     /**
      * Get dimensions
      *
-     * @return float 
+     * @return string 
      */
     public function getDimensions()
     {
@@ -299,6 +301,29 @@ class Produit
     public function getStock()
     {
         return $this->stock;
+    }
+    
+    /**
+     * Set venteFlash
+     *
+     * @param boolean $venteFlash
+     * @return Produit
+     */
+    public function setVenteFlash($venteFlash)
+    {
+    	$this->venteFlash = $venteFlash;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get venteFlash
+     *
+     * @return boolean
+     */
+    public function getVenteFlash()
+    {
+    	return $this->venteFlash;
     }
 
     /**

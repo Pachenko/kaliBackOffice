@@ -15,7 +15,7 @@ class ProduitRestController extends Controller
 	 */
 	public function getProduitAction($produit){
 		$produits = $this->getDoctrine()->getRepository('GblBackOfficeBundle:Produit')->find($produit);
-	
+		
 		if(!is_object($produits)){
 			throw $this->createNotFoundException();
 		}
