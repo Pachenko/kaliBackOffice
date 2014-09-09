@@ -6,12 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class CommandeController extends Controller
 {
 	/**
 	 * @Route("/commandes/liste/{page}", name="commandes.liste")
 	 * @Route("/commandes/liste/", defaults={"page" = 1})
+	 * @Secure(roles="ROLE_ADMIN")
 	 * @Template()
 	 */
 	public function commandeAction($page)

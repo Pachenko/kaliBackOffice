@@ -22,7 +22,9 @@
 <!-- Div globale -->
     	<div id="wrapper">
 <!-- Navigation -->  
-		{% include 'menu.html.twig' %}
+    	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			{% include 'menu.html.twig' %}
+		{% endif %}
 		
 <!-- Div contenu globale -->
 		

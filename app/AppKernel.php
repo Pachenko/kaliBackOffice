@@ -20,6 +20,9 @@ class AppKernel extends Kernel
         	new FOS\UserBundle\FOSUserBundle(),
         	new FOS\RestBundle\FOSRestBundle(),
         	new JMS\SerializerBundle\JMSSerializerBundle(),
+        	new JMS\AopBundle\JMSAopBundle(),
+    		new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+   			new JMS\DiExtraBundle\JMSDiExtraBundle($this),
         	new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
         	new Bmatzner\FontAwesomeBundle\BmatznerFontAwesomeBundle(),
         );

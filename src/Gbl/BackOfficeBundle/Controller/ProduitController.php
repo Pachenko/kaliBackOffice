@@ -7,12 +7,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Gbl\BackOfficeBundle\Entity\Produit;
 use Gbl\BackOfficeBundle\Form\ProduitType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 
 class ProduitController extends Controller
 {
-/**
+	/**
 	 * @Route("/produit/index", name="produit.index")
-	 */
+	 *  
+   	 * @Secure(roles="ROLE_CLIENT")
+   	 */
 	public function indexAction()
 	{
 		$repository = $this->getDoctrine()->getManager()->getRepository('GblBackOfficeBundle:Produit');
