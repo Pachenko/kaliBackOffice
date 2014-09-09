@@ -15,7 +15,7 @@ class ProduitController extends Controller
 	/**
 	 * @Route("/produit/index", name="produit.index")
 	 *  
-   	 * @Secure(roles="ROLE_CLIENT")
+   	 * @Secure(roles="ROLE_CLIENT, ROLE_ADMIN")
    	 */
 	public function indexAction()
 	{
