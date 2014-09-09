@@ -92,7 +92,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>{{ app.user.id}} <strong>{{ app.user.username}}</strong> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -170,10 +170,13 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#transporteur"><i class="fa fa-fw fa-truck"></i> Gestion Transporteurs <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="transporteur" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Transporteurs</a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Créer transporteur</a>
+                            </li>
+                            <li>
+                                <a href="#">Configuration</a>
                             </li>
                         </ul>
                     </li>
@@ -181,10 +184,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#theme"><i class="fa fa-fw fa-image"></i> Gestion Thèmes <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="theme" class="collapse">
                             <li>
-                                <a href="#">Transporteurs</a>
+                                <a href="{{ path('theme.index') }}">Thèmes</a>
                             </li>
                             <li>
-                                <a href="#">Créer transporteur</a>
+                                <a href="#">Créer thème</a>
                             </li>
                             <li>
                                 <a href="#">Configuration</a>

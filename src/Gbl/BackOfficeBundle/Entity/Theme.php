@@ -7,6 +7,7 @@ use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\VirtualProperty;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Theme
@@ -202,6 +203,14 @@ class Theme
     {
         return $this->titre;
     }
+    
+    public function getUser() {
+    	return $this->user;
+    }
+    
+    public function setUser($user) {
+    	$this->user = $user;
+    }
 
     /**
      * Set imageSliderFirst
@@ -339,6 +348,156 @@ class Theme
     public function getUrlSliderThird()
     {
     	return $this->urlSliderThird;
+    }
+    
+    public function setLogoUpload($logoUpload) {
+    	$this->logoUpload = $logoUpload;
+    }
+    
+    public function getLogoUpload() {
+    	return $this->logoUpload;
+    }
+    
+    public function setSliderFirstUpload($sliderFirstUpload) {
+    	$this->sliderFirstUpload = $sliderFirstUpload;
+    }
+    
+    public function getSliderFirstUpload() {
+    	return $this->sliderFirstUpload;
+    }
+    
+    public function setSliderSecondUpload($sliderSecondUpload) {
+    	$this->sliderSecondUpload = $sliderSecondUpload;
+    }
+    
+    public function getSliderSecondUpload() {
+    	return $this->sliderSecondUpload;
+    }
+    
+    public function setSliderThirdUpload($sliderThirdUpload) {
+    	$this->sliderThirdUpload = $sliderThirdUpload;
+    }
+    
+    public function getSliderThirdUpload() {
+    	return $this->sliderThirdUpload;
+    }
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    protected $logoUpload;
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    protected $sliderFirstUpload;
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    protected $sliderSecondUpload;
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    protected $sliderThirdUpload;
+    
+    public function getAbsoluteLogo()
+    {
+    	return null === $this->logo ? null : $this->getUploadRootDir() . '/' . $this->logo;
+    }
+    
+    public function getWebLogo()
+    {
+    	return null === $this->logo ? null : $this->getUploadDir() . '/' . $this->logo;
+    }
+    
+    public function getAbsoluteImageSliderFirst()
+    {
+    	return null === $this->imageSliderFirst ? null : $this->getUploadRootDir() . '/' . $this->imageSliderFirst;
+    }
+    
+    public function getWebImageSliderFirst()
+    {
+    	return null === $this->imageSliderFirst ? null : $this->getUploadDir() . '/' . $this->imageSliderFirst;
+    }
+    
+    public function getAbsoluteImageSliderSecond()
+    {
+    	return null === $this->imageSliderSecond ? null : $this->getUploadRootDir() . '/' . $this->imageSliderSecond;
+    }
+    
+    public function getWebImageSliderSecond()
+    {
+    	return null === $this->imageSliderSecond ? null : $this->getUploadDir() . '/' . $this->imageSliderSecond;
+    }
+    
+    public function getAbsoluteImageSliderThird()
+    {
+    	return null === $this->imageSliderThird ? null : $this->getUploadRootDir() . '/' . $this->imageSliderThird;
+    }
+    
+    public function getWebImageSliderThird()
+    {
+    	return null === $this->imageSliderThird ? null : $this->getUploadDir() . '/' . $this->imageSliderThird;
+    }
+    
+    protected function getUploadRootDir()
+    {
+    	return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+    
+    protected function getUploadDir()
+    {
+    	return 'uploads/themes';
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+    	if(null !== $this->logoUpload) {
+    		$this->logo = 'logo_' . sha1(uniqid(mt_rand(), true)) . '.' . $this->logoUpload->guessExtension();
+    	}
+    	if(null !== $this->sliderFirstUpload) {
+    		$this->imageSliderFirst = 'slider_1_' . sha1(uniqid(mt_rand(), true)) . '.' . $this->sliderFirstUpload->guessExtension();
+    	}
+    	if(null !== $this->sliderSecondUpload) {
+    		$this->imageSliderSecond = 'slider_2_' . sha1(uniqid(mt_rand(), true)) . '.' . $this->sliderSecondUpload->guessExtension();
+    	}
+    	if(null !== $this->sliderThirdUpload) {
+    		$this->imageSliderThird = 'slider_3_' . sha1(uniqid(mt_rand(), true)) . '.' . $this->sliderThirdUpload->guessExtension();
+    	}
+    }
+    
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function uploadFiles()
+    {
+    	if(null !== $this->logoUpload) {
+    		$this->logoUpload->move($this->getUploadRootDir(), $this->logo);
+    
+    		unset($this->logoUpload);
+    	}
+    	if(null !== $this->sliderFirstUpload) {
+    		$this->sliderFirstUpload->move($this->getUploadRootDir(), $this->imageSliderFirst);
+    	
+    		unset($this->sliderFirstUpload);
+    	}
+    	if(null !== $this->sliderSecondUpload) {
+    		$this->sliderSecondUpload->move($this->getUploadRootDir(), $this->imageSliderSecond);
+    	
+    		unset($this->sliderSecondUpload);
+    	}
+    	if(null !== $this->sliderThirdUpload) {
+    		$this->sliderThirdUpload->move($this->getUploadRootDir(), $this->imageSliderThird);
+    	
+    		unset($this->sliderThirdUpload);
+    	}
     }
     
 }
