@@ -13,7 +13,7 @@ class ThemeRestController extends Controller
 	 *
 	 * @View(serializerGroups={"Default"})
 	 */
-	public function getThemeAction($idUser)
+	public function getUserThemeAction($idUser)
 	{
 		$theme = $this->getDoctrine()
 					  ->getRepository('GblBackOfficeBundle:Theme')
@@ -31,9 +31,29 @@ class ThemeRestController extends Controller
 	 *
 	 * @View(serializerGroups={"Default"})
 	 */
-	public function getThemesAction(){
+	public function getThemesAction()
+	{
 		$themes = $this->getDoctrine()->getRepository('GblBackOfficeBundle:Theme')->findAll();
 	
 		return $themes;
+	}
+	
+
+	/**
+	 * Permet de récupérer un thème
+	 *
+	 * @View(serializerGroups={"Default"})
+	 */
+	public function getThemeAction($idTheme)
+	{
+		$theme = $this->getDoctrine()
+		->getRepository('GblBackOfficeBundle:Theme')
+		->findOneBy(array('id' => $idTheme));
+		
+		if(!is_object($theme)){
+			throw $this->createNotFoundException();
+		}
+		
+		return $theme;
 	}
 }
