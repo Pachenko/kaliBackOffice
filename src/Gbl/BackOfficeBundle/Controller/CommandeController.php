@@ -28,7 +28,8 @@ class CommandeController extends Controller
 			'route_params' => array()
 		);
 		
-	    if (!$commandes = $this->get('gbl.commande_manager')->getList($page, $maxCommandes)) {
+	    if (!$commandes = $this->get('gbl.commande_manager')
+	    					   ->getList($page, $maxCommandes)) {
 	        throw new NotFoundHttpException($this->get('translator')->trans('Il n\'y a pas de commande'));
 	    }
 	    
