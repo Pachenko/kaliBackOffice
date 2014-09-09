@@ -33,7 +33,7 @@ class ProduitController extends Controller
 	 */
 	public function newAction(Request $request)
 	{
-		$prod = new produit();
+		$prod = new Produit();
 		$form = $this->createForm(new ProduitFormType(), $prod);
 		
 		$form->handleRequest($request);
