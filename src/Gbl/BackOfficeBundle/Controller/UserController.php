@@ -17,7 +17,7 @@ class UserController extends Controller
 	{
 		$repository = $this->getDoctrine()->getManager()->getRepository('GblBackOfficeBundle:User');
 		$listeUsers = $repository->findAll();
-		
+
 		return $this->render('GblBackOfficeBundle:User:index.html.twig', array('users' => $listeUsers));
 	}
 	
@@ -48,7 +48,7 @@ class UserController extends Controller
 		}
 				
 		return $this->render('GblBackOfficeBundle:User:new.html.twig',array(
-    'form' => $form->createView(),));
+    	'form' => $form->createView(),));
 	}
 	
 	/**

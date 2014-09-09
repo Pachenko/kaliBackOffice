@@ -28,7 +28,18 @@ class UserFormType extends AbstractType
 			->add('pays',				'text')
 			->add('dateNaissance',		'date')
 			->add('telephoneFixe',		'integer')
-			->add('telephonePortable',	'integer');
+			->add('telephonePortable',	'integer')
+          	->add('roles', 'choice', 
+          		array(
+          			'choices' => 
+		                array(
+		                    'ROLE_PRODUCT' => 'ROLE_PRODUCT',
+		                    'ROLE_CLIENT'  => 'ROLE_CLIENT',
+		                    'ROLE_POWER'   => 'ROLE_POWER',
+		                ),
+		                'required'  => true,
+		                'multiple'  => true
+            ));
         
         $builder->add('Ajouter', 'submit');
     }
