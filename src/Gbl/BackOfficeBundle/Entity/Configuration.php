@@ -3,12 +3,18 @@
 namespace Gbl\BackOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Configuration
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Entity\ConfigurationRepository")
+ * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Repository\ConfigurationRepository")
+ * 
+ * @ExclusionPolicy("all") 
  */
 class Configuration
 {
@@ -25,6 +31,8 @@ class Configuration
      * @var string
      *
      * @ORM\Column(name="nom_site", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $nomSite;
 
@@ -32,6 +40,8 @@ class Configuration
      * @var boolean
      *
      * @ORM\Column(name="panier", type="boolean")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $panier;
 
@@ -39,6 +49,8 @@ class Configuration
      * @var integer
      *
      * @ORM\Column(name="theme", type="integer")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $theme;
 

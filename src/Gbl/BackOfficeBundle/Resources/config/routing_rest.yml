@@ -27,3 +27,8 @@ transporteurs:
     type: rest
     resource: "GblBackOfficeBundle:TransporteurRest"
     name_prefix: api_
+    
+configurations:
+    type: rest
+    resource: "GblBackOfficeBundle:ConfigurationRest"
+    name_prefix: api_
