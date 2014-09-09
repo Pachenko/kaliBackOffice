@@ -12,6 +12,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  * Theme
  *
  * @ORM\Table(name="theme")
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Repository\ThemeRepository")
  * 
  * @ExclusionPolicy("all") 
@@ -59,11 +60,56 @@ class Theme
     /**
      * @var string
      *
-     * @ORM\Column(name="image_slider", type="string", length=255)
+     * @ORM\Column(name="image_slider_1", type="string", length=255)
      * @Expose
      * @Groups({"Default"})
      */
-    private $imageSlider;
+    private $imageSliderFirst;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_slider_2", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
+     */
+    private $imageSliderSecond;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_slider_3", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
+     */
+    private $imageSliderThird;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url_slider_1", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
+     */
+    private $urlSliderFirst;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url_slider_2", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
+     */
+    private $urlSliderSecond;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url_slider_3", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
+     */
+    private $urlSliderThird;
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="type")
@@ -76,7 +122,6 @@ class Theme
     	$this->logo 		= '';
     	$this->slogan 		= '';
     	$this->titre 		= '';
-    	$this->imageSlider 	= '';
     }
     
     /**
@@ -159,25 +204,141 @@ class Theme
     }
 
     /**
-     * Set imageSlider
+     * Set imageSliderFirst
      *
-     * @param string $imageSlider
+     * @param string $imageSliderFirst
      * @return Theme
      */
-    public function setImageSlider($imageSlider)
+    public function setImageSliderFirst($imageSliderFirst)
     {
-        $this->imageSlider = $imageSlider;
+        $this->imageSliderFirst = $imageSliderFirst;
 
         return $this;
     }
 
     /**
-     * Get imageSlider
+     * Get imageSliderFirst
      *
      * @return string 
      */
-    public function getImageSlider()
+    public function getImageSliderFirst()
     {
-        return $this->imageSlider;
+        return $this->imageSliderFirst;
     }
+    
+    /**
+     * Set imageSliderSecond
+     *
+     * @param string $imageSliderSecond
+     * @return Theme
+     */
+    public function setImageSliderSecond($imageSliderSecond)
+    {
+    	$this->imageSliderSecond = $imageSliderSecond;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get imageSliderSecond
+     *
+     * @return string
+     */
+    public function getImageSliderSecond()
+    {
+    	return $this->imageSliderSecond;
+    }
+    
+    /**
+     * Set imageSliderThird
+     *
+     * @param string $imageSliderThird
+     * @return Theme
+     */
+    public function setImageSliderThird($imageSliderThird)
+    {
+    	$this->imageSliderThird = $imageSliderThird;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get imageSliderThird
+     *
+     * @return string
+     */
+    public function getImageSliderThird()
+    {
+    	return $this->imageSliderThird;
+    }
+    
+    /**
+     * Set urlSliderFirst
+     *
+     * @param string $urlSliderFirst
+     * @return Theme
+     */
+    public function setUrlSliderFirst($urlSliderFirst)
+    {
+    	$this->urlSliderFirst = $urlSliderFirst;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get urlSliderFirst
+     *
+     * @return string
+     */
+    public function getUrlSliderFirst()
+    {
+    	return $this->urlSliderFirst;
+    }
+    
+    /**
+     * Set urlSliderSecond
+     *
+     * @param string $urlSliderSecond
+     * @return Theme
+     */
+    public function setUrlSliderSecond($urlSliderSecond)
+    {
+    	$this->urlSliderSecond = $urlSliderSecond;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get urlSliderSecond
+     *
+     * @return string
+     */
+    public function getUrlSliderSecond()
+    {
+    	return $this->urlSliderSecond;
+    }
+    
+    /**
+     * Set urlSliderThird
+     *
+     * @param string $urlSliderThird
+     * @return Theme
+     */
+    public function setUrlSliderThird($urlSliderThird)
+    {
+    	$this->urlSliderThird = $urlSliderThird;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get urlSliderThird
+     *
+     * @return string
+     */
+    public function getUrlSliderThird()
+    {
+    	return $this->urlSliderThird;
+    }
+    
 }
