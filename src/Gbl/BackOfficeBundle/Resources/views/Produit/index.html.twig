@@ -39,6 +39,7 @@ Produit
 		        <tr>
 		            <th>#</th>
 		            <th>NOM</th>
+		            <th>CATEGORIE</th>
 		            <th>REFERENCE</th>
 		            <th>DESCRIPTION</th>
 		            <th>PRIX</th>
@@ -53,6 +54,7 @@ Produit
 		        <tr>
 		            <td><img heigth="50px" width="50px" src="{{ asset('uploads/' ~ prod.getFileImg)}}" alt="{{ prod.getNom }}" /></td>
 		            <td>{{ prod.getNom }}</td>
+		            <td>{{ prod.getCategorie.nom }}</td>
 		            <td>{{ prod.getReference }}</td>
 		            <td>{{ prod.getDescription }}</td>
 		            <td>{{ prod.getPrix }}</td>
