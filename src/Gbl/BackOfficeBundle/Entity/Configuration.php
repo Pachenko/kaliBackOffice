@@ -20,6 +20,13 @@ class Configuration
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_site", type="string", length=255)
+     */
+    private $nomSite;
 
     /**
      * @var boolean
@@ -44,6 +51,29 @@ class Configuration
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Set siteNom
+     *
+     * @param string $siteNom
+     * @return Configuration
+     */
+    public function setSiteNom($siteNom)
+    {
+    	$this->siteNom = $siteNom;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get siteNom
+     *
+     * @return string
+     */
+    public function getSiteNom()
+    {
+    	return $this->siteNom;
     }
 
     /**
