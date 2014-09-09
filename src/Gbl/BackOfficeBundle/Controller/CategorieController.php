@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Gbl\BackOfficeBundle\Entity\Categorie;
-use Gbl\BackOfficeBundle\Form\CategorieType;
+use Gbl\BackOfficeBundle\Form\Type\CategorieFormType;
 
 class CategorieController extends Controller
 {
@@ -31,7 +31,7 @@ class CategorieController extends Controller
 	public function newAction(Request $request)
 	{
 		$cat = new Categorie();
-		$form = $this->createForm(new CategorieType(), $cat);
+		$form = $this->createForm(new CategorieFormType(), $cat);
 		
 		$form->handleRequest($request);
 		
@@ -60,7 +60,7 @@ class CategorieController extends Controller
 		$cat = $this->getDoctrine()->getRepository('GblBackOfficeBundle:Categorie')->find($id);
 			
 		if ($cat) {
-			$form = $this->createForm(new CategorieType(), $cat);
+			$form = $this->createForm(new CategorieFormType(), $cat);
 		}
 		
 		$form->handleRequest($request);
@@ -99,7 +99,7 @@ class CategorieController extends Controller
 			);
 			return $this->redirect($this->generateUrl('categorie.index'));
 		} else {
-			$form = $this->createForm(new CategorieType(), $cat);
+			$form = $this->createForm(new CategorieFormType(), $cat);
 			return $this->redirect($this->generateUrl('categorie.index'));
 		}
 	}

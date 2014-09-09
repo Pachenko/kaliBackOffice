@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Gbl\BackOfficeBundle\Entity\User;
-use Gbl\BackOfficeBundle\Form\UserType;
+use Gbl\BackOfficeBundle\Form\Type\UserFormType;
 
 class UserController extends Controller
 {
@@ -28,7 +28,7 @@ class UserController extends Controller
 	{
 		$user = new User();
 		
-		$form = $this->createForm(new UserType(), $user);
+		$form = $this->createForm(new UserFormType(), $user);
 		
 		$request = $this->get('request');
 	
@@ -59,7 +59,7 @@ class UserController extends Controller
 		$user = $this->getDoctrine()->getRepository('GblBackOfficeBundle:User')->find($id);
 			
 		if ($user) {
-			$form = $this->createForm(new UserType(), $user);
+			$form = $this->createForm(new UserFormType(), $user);
 		}
 		
 		$form->handleRequest($request);
@@ -98,7 +98,7 @@ class UserController extends Controller
 			);
 			return $this->redirect($this->generateUrl('user.index'));
 		} else {
-			$form = $this->createForm(new UserType(), $cat);
+			$form = $this->createForm(new UserFormType(), $cat);
 			return $this->redirect($this->generateUrl('user.index'));
 		}
 	}

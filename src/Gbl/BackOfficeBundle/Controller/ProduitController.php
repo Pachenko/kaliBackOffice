@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Gbl\BackOfficeBundle\Entity\Produit;
-use Gbl\BackOfficeBundle\Form\ProduitType;
+use Gbl\BackOfficeBundle\Form\Type\ProduitFormType;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
 
@@ -34,7 +34,7 @@ class ProduitController extends Controller
 	public function newAction(Request $request)
 	{
 		$prod = new produit();
-		$form = $this->createForm(new ProduitType(), $prod);
+		$form = $this->createForm(new ProduitFormType(), $prod);
 		
 		$form->handleRequest($request);
 		
@@ -63,7 +63,7 @@ class ProduitController extends Controller
 		$prod = $this->getDoctrine()->getRepository('GblBackOfficeBundle:Produit')->find($id);
 			
 		if ($prod) {
-			$form = $this->createForm(new ProduitType(), $prod);
+			$form = $this->createForm(new ProduitFormType(), $prod);
 		}
 		
 		$form->handleRequest($request);
@@ -102,7 +102,7 @@ class ProduitController extends Controller
 			);
 			return $this->redirect($this->generateUrl('produit.index'));
 		} else {
-			$form = $this->createForm(new ProduitType(), $prod);
+			$form = $this->createForm(new ProduitFormType(), $prod);
 			return $this->redirect($this->generateUrl('produit.index'));
 		}
 	}
