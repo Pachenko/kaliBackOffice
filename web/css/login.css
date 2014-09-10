@@ -10,6 +10,15 @@ body {
 	margin: 0;
 }
 
+label {
+	float: left;
+	padding: 5px 0px 5px 0px;
+}
+
+select {
+	 display:inline-block;  
+}
+
 h3 { margin: 0; }
 
 a {
@@ -89,7 +98,8 @@ input[type="submit"] { cursor: pointer; }
 }
 
 #login-form input[type="text"],
-#login-form input[type="password"] {
+#login-form input[type="password"],
+#login-form input[type="email"] {
 	border: 1px solid #dcdcdc;
 	padding: 12px 10px;
 	width: 238px;
