@@ -40,6 +40,12 @@ Utilisateur
 		            <th>#</th>
 		            <th>NOM</th>
 		            <th>PRENOM</th>
+		            <th>NOM D'UTILISATEUR</th>
+		            <th>EMAIL</th>
+		            <th>ADRESSE</th>
+		            <th>VILLE</th>
+		            <th>TELEPHONE</th>
+		            <th>ACTION</th>
 		        </tr>
 		    </thead>
 		    <tbody>
@@ -48,6 +54,11 @@ Utilisateur
 		            <td>{{ user.getId }}</td>
 		            <td>{{ user.getNom }}</td>
 		            <td>{{ user.getPrenom }}</td>
+		            <td>{{ user.getUsername }}</td>
+		            <td>{{ user.getEmail }}</td>
+		            <td>{{ user.getAdresse }}</td>
+		            <td>{{ user.getVille }}</td>
+		            <td>{{ user.getTelephonePortable }}</td>
 		            <td><a href="{{ path('user.edit', { 'id': user.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a> 
 		            <a href="{{ path('user.delete', { 'id': user.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
 		        </tr>

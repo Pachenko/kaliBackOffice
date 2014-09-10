@@ -102,4 +102,15 @@ class UserController extends Controller
 			return $this->redirect($this->generateUrl('user.index'));
 		}
 	}
+	
+	/**
+	 * @Route("/user/client")
+	 */
+	public function clientAction()
+	{
+		$repository = $this->getDoctrine()->getManager()->getRepository('GblBackOfficeBundle:User');
+		$listeUsers = $repository->getClients();
+	
+		return $this->render('GblBackOfficeBundle:User:client.html.twig', array('users' => $listeUsers));
+	}
 }

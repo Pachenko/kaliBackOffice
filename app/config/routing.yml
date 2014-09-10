@@ -45,3 +45,11 @@ user.edit:
 user.delete:
     pattern:  /user/delete/{id}
     defaults: { _controller: GblBackOfficeBundle:User:delete }
+    
+user.client:
+    pattern:  /user/client
+    defaults: { _controller: GblBackOfficeBundle:User:client}
+    
+user.search:
+    pattern:  /user/search
+    defaults: { _controller: GblBackOfficeBundle:User:search }
