@@ -59,7 +59,7 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="poids", type="string", length=255)
+     * @ORM\Column(name="poids", type="string", length=255, nullable=true)
      * @Expose
      * @Groups({"Default"})
      */

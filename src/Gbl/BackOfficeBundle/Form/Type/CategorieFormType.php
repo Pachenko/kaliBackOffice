@@ -15,6 +15,7 @@ class CategorieFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$builder->setMethod('POST');
+    	$builder->setRequired(false);
     	
         $builder
             ->add('nom',		 		'text')
