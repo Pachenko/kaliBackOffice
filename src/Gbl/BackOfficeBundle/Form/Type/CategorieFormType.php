@@ -17,11 +17,13 @@ class CategorieFormType extends AbstractType
     	$builder->setMethod('POST');
     	
         $builder
-            ->add('nom',		 'text')
-            ->add('description', 'text')
+            ->add('nom',		 		'text')
+            ->add('description',		'text')
+            ->add('ecoParticipation', 	'number')
+            ->add('poids',		 		'text')
         ;
         
-        $builder->add('Ajouter', 'submit');
+        $builder->add('Enregistrer', 'submit');
     }
     
     /**

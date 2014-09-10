@@ -46,6 +46,24 @@ class Categorie
      * @Groups({"Default"})
      */
     private $description;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="eco_participation", type="float")
+     * @Expose
+     * @Groups({"Default"})
+     */
+    private $ecoParticipation;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="poids", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
+     */
+    private $poids;
 
     /**
      * @ORM\OneToMany(targetEntity="Produit", mappedBy="categorie", cascade={"remove"})
@@ -56,8 +74,6 @@ class Categorie
     
     public function __construct()
     {
-    	$this->nom 		   = '';
-    	$this->description = '';
     	$this->produits    = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -115,6 +131,52 @@ class Categorie
     public function getDescription()
     {
         return $this->description;
+    }
+    
+    /**
+     * Set ecoParticipation
+     *
+     * @param float $ecoParticipation
+     * @return Categorie
+     */
+    public function setEcoParticipation($ecoParticipation)
+    {
+    	$this->ecoParticipation = $ecoParticipation;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get ecoParticipation
+     *
+     * @return float
+     */
+    public function getEcoParticipation()
+    {
+    	return $this->ecoParticipation;
+    }
+    
+    /**
+     * Set poids
+     *
+     * @param string $poids
+     * @return Categorie
+     */
+    public function setPoids($poids)
+    {
+    	$this->poids = $poids;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get poids
+     *
+     * @return string
+     */
+    public function getPoids()
+    {
+    	return $this->poids;
     }
 
     /**

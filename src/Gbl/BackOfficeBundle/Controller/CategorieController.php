@@ -17,7 +17,7 @@ class CategorieController extends Controller
 	public function indexAction()
 	{
 		$repository = $this->getDoctrine()->getManager()->getRepository('GblBackOfficeBundle:Categorie');
-		$listeCategories = $repository->findAll();
+		$listeCategories = $repository->findAllOrderByNom();
 		
 		return $this->render('GblBackOfficeBundle:Categorie:index.html.twig', array('categories' => $listeCategories));
 	}
@@ -26,7 +26,7 @@ class CategorieController extends Controller
 	 * @Route("/categorie/new", name="categorie.new")
 	 * 
 	 * @param Request $request
-	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+	 * @return Response
 	 */
 	public function newAction(Request $request)
 	{
