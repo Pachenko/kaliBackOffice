@@ -11,7 +11,7 @@ use Gbl\BackOfficeBundle\Form\Type\UserFormType;
 class UserController extends Controller
 {
 	/**
-	 * @Route("/user/index")
+	 * @Route("/user")
 	 */
 	public function indexAction()
 	{

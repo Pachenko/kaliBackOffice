@@ -13,7 +13,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 class ProduitController extends Controller
 {
 	/**
-	 * @Route("/produit/index", name="produit.index")
+	 * @Route("/produit", name="produit.index")
 	 *  
    	 * @Secure(roles="ROLE_CLIENT, ROLE_ADMIN")
    	 */

@@ -11,7 +11,7 @@ use Gbl\BackOfficeBundle\Form\Type\ThemeFormType;
 class ThemeController extends Controller
 {
 	/**
-	 * @Route("/theme/index", name="theme.index")
+	 * @Route("/theme", name="theme.index")
 	 */
 	public function indexAction()
 	{

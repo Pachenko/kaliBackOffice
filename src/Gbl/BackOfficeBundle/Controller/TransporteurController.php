@@ -12,8 +12,7 @@ use Gbl\BackOfficeBundle\Form\Type\TransporteurFormType;
 class TransporteurController extends Controller
 {
 	/**
-	 * @Route("/transporteur/index", name="transporteur.index")
-	 * @Route("/transporteur/")
+	 * @Route("/transporteur", name="transporteur.index")
 	 */
 	public function indexAction()
 	{

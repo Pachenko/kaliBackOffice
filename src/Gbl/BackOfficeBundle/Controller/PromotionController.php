@@ -13,7 +13,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 class PromotionController extends Controller
 {
 	/**
-	 * @Route("/promotion/index", name="promotion.index")
+	 * @Route("/promotion", name="promotion.index")
 	 *  
    	 * @Secure(roles="ROLE_CLIENT, ROLE_ADMIN")
    	 */

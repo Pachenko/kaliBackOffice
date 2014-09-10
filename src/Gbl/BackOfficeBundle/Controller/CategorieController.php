@@ -12,7 +12,7 @@ use Gbl\BackOfficeBundle\Form\Type\CategorieFormType;
 class CategorieController extends Controller
 {
 	/**
-	 * @Route("/categorie/index", name="categorie.index")
+	 * @Route("/categorie", name="categorie.index")
 	 */
 	public function indexAction()
 	{
