@@ -1,1 +1,24 @@
-conf
+{% extends '::base.html.twig' %}
+
+{% block title %}
+index - Configuration
+{% endblock %}
+
+{% block h1 %}
+Configuration
+{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+	<li>
+		<i class="fa fa-dashboard"></i>  <a href="{{ path('default.index') }}">Dashboard</a>
+	</li>
+	<li class="active">
+		<i class="fa fa-table"></i> Configuration
+	</li>
+</ol>
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
