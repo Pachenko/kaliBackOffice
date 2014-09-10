@@ -14,8 +14,7 @@ class UserRepository extends EntityRepository
 {
 	public function getUser($data)
 	{
-		$em = $this->getDoctrine()->getManager();
-		$query = $em->createQuery(
+		$query = $this->_em->createQuery(
 				'SELECT u
 			    FROM GblBackOfficeBundle:User u
 			    WHERE u.nom like :nom
