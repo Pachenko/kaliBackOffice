@@ -1,6 +1,6 @@
 <?php
 
-namespace Gbl\BackOfficeBundle\Entity;
+namespace Gbl\BackOfficeBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class PromotionRepository extends EntityRepository
 {
+	public function findAllNotExpired()
+	{
+		return $this->getEntityManager()
+		->createQuery('SELECT pt FROM GblBackOfficeBundle:Promotion pt WHERE pt.dateFin > CURRENT_DATE()')
+		->getResult();
+	}
+	
+	public function findAllExpired()
+	{
+		return $this->getEntityManager()
+		->createQuery('SELECT pt FROM GblBackOfficeBundle:Promotion pt WHERE pt.dateFin < CURRENT_DATE()')
+		->getResult();
+	}
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Promotion
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Entity\PromotionRepository")
+ * @ORM\Entity(repositoryClass="Gbl\BackOfficeBundle\Repository\PromotionRepository")
  */
 class Promotion
 {
@@ -27,18 +27,25 @@ class Promotion
      * @ORM\Column(name="code", type="string", length=255)
      */
     private $code;
+    
+    /**
+     * @var float
+     * 
+     * @ORM\Column(name="reduction", type="float")
+     */
+    private $reduction;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_debut", type="datetime")
+     * @ORM\Column(name="date_debut", type="date")
      */
     private $dateDebut;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_fin", type="datetime")
+     * @ORM\Column(name="date_fin", type="date")
      */
     private $dateFin;
     
@@ -79,6 +86,29 @@ class Promotion
     public function getCode()
     {
         return $this->code;
+    }
+    
+    /**
+     * Set reduction
+     *
+     * @param string $reduction
+     * @return Promotion
+     */
+    public function setReduction($reduction)
+    {
+    	$this->reduction = $reduction;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get reduction
+     *
+     * @return string
+     */
+    public function getReduction()
+    {
+    	return $this->reduction;
     }
 
     /**

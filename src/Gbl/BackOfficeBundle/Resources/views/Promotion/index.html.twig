@@ -1,0 +1,90 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+index - Promotion
+{% endblock %}
+
+{% block h1 %}
+Promotion
+{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+	<li>
+		<i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+	</li>
+	<li class="active">
+		<i class="fa fa-table"></i> Promotion
+	</li>
+</ol>
+{% endblock %}
+
+{% block body %}
+<div class="col-lg-12">
+<a href="{{ path('promotion.new') }}" class="btn btn-success">Ajouter une promotion <i class="fa fa-fw fa-plus"></i></a>
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<br /><br />
+    <div class="alert alert-success">
+    	<a href="#" class="close" data-dismiss="alert">&times;</a>
+        <p><img width="20" height="20" src="{{ asset('img/icons/ok.png') }}" alt="success" />  {{ flashMessage }}</p>
+    </div>
+    
+{% endfor %}
+
+	<h2>Liste des Promotions en cours</h2>
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover table-striped">
+		    <thead>
+		        <tr>
+		            <th>#</th>
+		            <th>CODE</th>
+		            <th>REDUCTION</th>
+		            <th>DATE DÉBUT</th>
+		            <th>DATE FIN</th>
+		            <th></th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        {% for pt in promotions %}
+		        <tr>
+		        	<td>{{ pt.getId }}</td>
+		            <td>{{ pt.getCode }}</td>
+		            <td>{{ pt.getReduction }}%</td>
+		            <td>{{ pt.getDateDebut|date("d/m/Y") }}</td>
+		            <td>{{ pt.getDateFin|date("d/m/Y") }}</td>
+					<td class="text-center"><a href="{{ path('promotion.edit', { 'id': pt.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a> 
+		            <a href="{{ path('promotion.delete', { 'id': pt.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
+		        </tr>
+		        {% endfor %}
+		    </tbody>
+		</table>
+	</div>
+	
+	<h2>Liste des Promotions expirées</h2>
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover table-striped">
+		    <thead>
+		        <tr>
+		            <th>#</th>
+		            <th>CODE</th>
+		            <th>REDUCTION</th>
+		            <th>DATE DÉBUT</th>
+		            <th>DATE FIN</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        {% for pte in promotionsexpired %}
+		        <tr>
+		        	<td>{{ pte.getId }}</td>
+		            <td>{{ pte.getCode }}</td>
+		            <td>{{ pte.getReduction }}%</td>
+		            <td>{{ pte.getDateDebut|date("d/m/Y") }}</td>
+		            <td>{{ pte.getDateFin|date("d/m/Y") }}</td>
+				</tr>
+		        {% endfor %}
+		    </tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}
