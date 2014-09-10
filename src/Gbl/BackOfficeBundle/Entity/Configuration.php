@@ -48,12 +48,32 @@ class Configuration
     /**
      * @var integer
      *
-     * @ORM\Column(name="theme", type="integer")
+     * @ORM\Column(name="id_theme", type="integer")
+     * @ORM\OneToOne(targetEntity="Theme")
      * @Expose
      * @Groups({"Default"})
      */
     private $theme;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_transporteur_leger", type="integer")
+     * @ORM\OneToOne(targetEntity="Transporteur")
+     * @Expose
+     * @Groups({"Default"})
+     */
+    private $transporteurLeger;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_transporteur_lourd", type="integer")
+     * @ORM\OneToOne(targetEntity="Transporteur")
+     * @Expose
+     * @Groups({"Default"})
+     */
+    private $transporteurLourd;
 
     /**
      * Get id
@@ -117,20 +137,66 @@ class Configuration
      * @param integer $theme
      * @return Configuration
      */
-    public function setTheme($theme)
+    public function setTheme(Theme $theme = null)
     {
         $this->theme = $theme;
 
         return $this;
     }
-
+    
     /**
      * Get theme
      *
-     * @return integer 
+     * @return integer
      */
     public function getTheme()
     {
-        return $this->theme;
+    	return $this->theme;
+    }
+
+    /**
+     * Get transporteurLeger
+     *
+     * @return integer 
+     */
+    public function getTransporteurLeger()
+    {
+        return $this->transporteurLeger;
+    }
+    
+    /**
+     * Set transporteurLeger
+     *
+     * @param integer $transporteurLeger
+     * @return Configuration
+     */
+    public function setTransporteurLeger(Transporteur $transporteurLeger = null)
+    {
+    	$this->transporteurLeger = $transporteurLeger;
+    
+    	return $this;
+    }
+    
+    /**
+     * Set transporteurLourd
+     *
+     * @param integer $transporteurLourd
+     * @return Configuration
+     */
+    public function setTranspoteurLourd(Transporteur $transporteurLourd = null)
+    {
+    	$this->transporteurLourd = $transporteurLourd;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get transporteurLourd
+     *
+     * @return integer
+     */
+    public function getTransporteurLourd()
+    {
+    	return $this->transporteurLourd;
     }
 }

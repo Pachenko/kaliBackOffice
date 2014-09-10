@@ -5,6 +5,7 @@ namespace Gbl\BackOfficeBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Gbl\BackOfficeBundle\Repository\CategorieRepository;
 
 class ProduitFormType extends AbstractType
 {
@@ -33,11 +34,20 @@ class ProduitFormType extends AbstractType
         		'data' => '0'
         ));
         
+        /**
+         * Liste Categories sans doublon
+         */
         $builder->add('categorie', 'entity', array(
         		'class' => 'GblBackOfficeBundle:Categorie',
         		'multiple' => false,
         		'property' => 'nom',
+        		'query_builder' => function(CategorieRepository $q)
+        		{
+        			return $q->createQueryBuilder('c')
+        			->groupBy('c.nom');
+        		}
         ));
+        
         $builder->add('fileImgUpload','file');
         
         $builder->add('Enregistrer', 'submit');

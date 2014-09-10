@@ -145,13 +145,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#promotion"><i class="fa fa-fw fa-barcode"></i> Gestion Promotion <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="promotion" class="collapse">
                             <li>
-                                <a href="#">Promotions</a>
+                                <a href="{{ path('promotion.index') }}">Promotions</a>
                             </li>
                             <li>
-                                <a href="#">Créer promotion</a>
-                            </li>
-                            <li>
-                                <a href="#">Promotions expirées</a>
+                                <a href="{{ path('promotion.new') }}">Créer promotion</a>
                             </li>
                         </ul>
                     </li>
@@ -175,9 +172,6 @@
                             <li>
                                 <a href="#">Créer transporteur</a>
                             </li>
-                            <li>
-                                <a href="#">Configuration</a>
-                            </li>
                         </ul>
                     </li>
                     <li>
@@ -187,10 +181,7 @@
                                 <a href="{{ path('theme.index') }}">Thèmes</a>
                             </li>
                             <li>
-                                <a href="#">Créer thème</a>
-                            </li>
-                            <li>
-                                <a href="#">Configuration</a>
+                                <a href="{{ path('theme.new') }}">Créer thème</a>
                             </li>
                         </ul>
                     </li>

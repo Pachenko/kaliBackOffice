@@ -18,4 +18,11 @@ class CategorieRepository extends EntityRepository
 		->createQuery('SELECT c FROM GblBackOfficeBundle:Categorie c ORDER BY c.nom, c.poids')
 		->getResult();
 	}
+	
+	public function findAllGroupBy()
+	{
+		return $this->getEntityManager()
+		->createQuery('SELECT c FROM GblBackOfficeBundle:Categorie c GROUP BY c.nom')
+		->getResult();
+	}
 }
