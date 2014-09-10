@@ -86,26 +86,26 @@ class Configuration
     }
     
     /**
-     * Set siteNom
+     * Set nomSite
      *
-     * @param string $siteNom
+     * @param string $nomSite
      * @return Configuration
      */
-    public function setSiteNom($siteNom)
+    public function setNomSite($nomSite)
     {
-    	$this->siteNom = $siteNom;
+    	$this->nomSite = $nomSite;
     
     	return $this;
     }
     
     /**
-     * Get siteNom
+     * Get nomSite
      *
      * @return string
      */
-    public function getSiteNom()
+    public function getNomSite()
     {
-    	return $this->siteNom;
+    	return $this->nomSite;
     }
 
     /**
@@ -170,7 +170,7 @@ class Configuration
      * @param integer $transporteurLeger
      * @return Configuration
      */
-    public function setTransporteurLeger(Transporteur $transporteurLeger = null)
+    public function setTransporteurLeger(Transporteur $transporteurLeger)
     {
     	$this->transporteurLeger = $transporteurLeger;
     
@@ -183,7 +183,7 @@ class Configuration
      * @param integer $transporteurLourd
      * @return Configuration
      */
-    public function setTranspoteurLourd(Transporteur $transporteurLourd = null)
+    public function setTransporteurLourd(Transporteur $transporteurLourd)
     {
     	$this->transporteurLourd = $transporteurLourd;
     

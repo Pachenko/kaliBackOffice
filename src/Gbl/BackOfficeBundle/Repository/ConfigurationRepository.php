@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class ConfigurationRepository extends EntityRepository
 {
+	public function findByNom()
+	{
+		return $this->getEntityManager()
+		->createQuery('SELECT c FROM GblBackOfficeBundle:Categorie c ORDER BY c.nom, c.poids')
+		->getResult();
+	}
 }
