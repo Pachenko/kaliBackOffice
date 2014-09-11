@@ -178,7 +178,22 @@ class UserController extends Controller
 			$usr = $this->getDoctrine()->getRepository('GblBackOfficeBundle:User')
 			->getSearch($form->getData());
 			
-			return $this->redirect ( $this->generateUrl ( 'user.search' ) );
+			$handle = fopen('php://memory', 'r+');
+	        $header = array();
+	
+	        while (false !== ($row = $usr->next())) {
+	            fputcsv($handle, $row[0]);
+	            $em->detach($row[0]);
+	        }
+	
+	        rewind($handle);
+	        $content = stream_get_contents($handle);
+	        fclose($handle);
+	        
+	        return new Response($content, 200, array(
+	            'Content-Type' => 'application/force-download',
+	            'Content-Disposition' => 'attachment; filename="export.csv"'
+	        ));
 		}
 		
 		return $this->render ( 'GblBackOfficeBundle:User:search.html.twig', array (
