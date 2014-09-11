@@ -12,4 +12,32 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProduitRepository extends EntityRepository
 {
+	public function findAllWithStock()
+	{
+		return $this->getEntityManager()
+		->createQuery('SELECT p FROM GblBackOfficeBundle:Produit p WHERE p.stock > 0')
+		->getResult();
+	}
+	
+	public function findAllNotStock()
+	{
+		return $this->getEntityManager()
+		->createQuery('SELECT p FROM GblBackOfficeBundle:Produit p WHERE p.stock <= 0')
+		->getResult();
+	}
+	
+	public function findAllWithVenteFlashAndWithStock()
+	{
+		return $this->getEntityManager()
+		->createQuery('SELECT p FROM GblBackOfficeBundle:Produit p WHERE p.venteFlash = true AND p.stock > 0')
+		->getResult();
+	}
+	
+	public function findAllWithVenteFlashAndNotStock()
+	{
+		return $this->getEntityManager()
+		->createQuery('SELECT p FROM GblBackOfficeBundle:Produit p WHERE p.venteFlash = true AND p.stock <= 0')
+		->getResult();
+	}
+	
 }

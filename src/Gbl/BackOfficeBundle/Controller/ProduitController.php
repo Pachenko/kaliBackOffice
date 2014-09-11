@@ -14,15 +14,34 @@ class ProduitController extends Controller
 {
 	/**
 	 * @Route("/produit", name="produit.index")
-	 *  
+	 * @Route("/produit/")
    	 * @Secure(roles="ROLE_CLIENT, ROLE_ADMIN")
    	 */
 	public function indexAction()
 	{
 		$repository = $this->getDoctrine()->getManager()->getRepository('GblBackOfficeBundle:Produit');
-		$listeproduits = $repository->findAll();
+		$produits = $repository->findAllWithStock();
+		$produits_notstock = $repository->findAllNotStock();
 		
-		return $this->render('GblBackOfficeBundle:Produit:index.html.twig', array('produits' => $listeproduits));
+		return $this->render('GblBackOfficeBundle:Produit:index.html.twig', array(
+				'produits' => $produits,
+				'noproduits' => $produits_notstock
+		));
+	}
+	
+	/**
+	 * @Route("/produit/flash", name="produit.flash")
+	 */
+	public function venteFlashAction()
+	{
+		$repository = $this->getDoctrine()->getManager()->getRepository('GblBackOfficeBundle:Produit');
+		$produits = $repository->findAllWithVenteFlashAndWithStock();
+		$produits_notstock = $repository->findAllWithVenteFlashAndNotStock();
+		
+		return $this->render('GblBackOfficeBundle:Produit:venteFlash.html.twig', array(
+				'produits' => $produits,
+				'noproduits' => $produits_notstock
+		));
 	}
 	
 	/**
