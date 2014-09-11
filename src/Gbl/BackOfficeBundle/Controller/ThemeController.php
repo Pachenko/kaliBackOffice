@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Gbl\BackOfficeBundle\Entity\Theme;
 use Gbl\BackOfficeBundle\Form\Type\ThemeFormType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class ThemeController extends Controller
 {

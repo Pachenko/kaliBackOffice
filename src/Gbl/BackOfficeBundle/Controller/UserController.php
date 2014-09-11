@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Gbl\BackOfficeBundle\Entity\User;
 use Gbl\BackOfficeBundle\Form\Type\UserFormType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class UserController extends Controller
 {

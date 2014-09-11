@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Gbl\BackOfficeBundle\Entity\Categorie;
 use Gbl\BackOfficeBundle\Form\Type\CategorieFormType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class CategorieController extends Controller
 {

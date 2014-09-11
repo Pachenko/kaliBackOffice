@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Gbl\BackOfficeBundle\Entity\Transporteur;
 use Gbl\BackOfficeBundle\Form\Type\TransporteurFormType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class TransporteurController extends Controller
 {
