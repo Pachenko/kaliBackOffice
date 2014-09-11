@@ -56,7 +56,7 @@ Commandes
 			            <td>{{ commande.getStatut }}</td>
 			            <td>{{ commande.getUser.getUsername }}</td>
 			            <td>{{ commande.getTransporteur.getNom }}</td>
-			            <td>{{ commande.getPromotion.getCode }}</td>
+			            <td>{% if commande.getPromotion %}{{ commande.getPromotion.getCode }}{% endif %}</td>
 			            <td>{{ commande.getPrix }}</td>
 			            <td>{{ commande.getDatePaiement|date('Y-m-d') }}</td>
 			        </tr>
