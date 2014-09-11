@@ -43,6 +43,16 @@ class ProduitRestController extends Controller
 	}
 	
 	/**
+	 * Permet de récupérer les produits en vente flash
+	 *
+	 * @View(serializerGroups={"Default"})
+	 */
+	public function getVenteFlashAction(){
+		$produits = $this->getDoctrine()->getManager()->getRepository('GblBackOfficeBundle:Produit')->findAllWithVenteFlashAndWithStock();
+		return $produits;
+	}
+	
+	/**
 	 * Permet de récupérer les produits d'une categorie
 	 * 
 	 * @View(serializerGroups={"Default"})
