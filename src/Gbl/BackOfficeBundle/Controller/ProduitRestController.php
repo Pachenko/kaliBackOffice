@@ -37,11 +37,11 @@ class ProduitRestController extends Controller
 	 * 
 	 * @View(serializerGroups={"Default"})
 	 */
-	public function getProductAction($categorie)
+	public function getProductAction($idCategorie)
 	{
 		$idCategorie = $this->getDoctrine()
 					   ->getRepository('GblBackOfficeBundle:Categorie')
-					   ->findOneBy(array('nom' => $categorie))
+					   ->findOneBy(array('id' => $idCategorie))
 					   ->getId();
 		
 		$produits = $this->getDoctrine()
