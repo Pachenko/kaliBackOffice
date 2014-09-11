@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Gbl\BackOfficeBundle\Entity\User;
 use Gbl\BackOfficeBundle\Form\Type\UserFormType;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -166,7 +167,7 @@ class UserController extends Controller
 		) )->add ( 'telephonePortable', 'integer', array (
 				'label' => 'Téléphone',
 				'required' => false 
-		) )->add ( 'rechercher', 'submit' );
+		) )->add ( 'Exporter', 'submit' );
 		
 		$form = $formBuilder->getForm();
 		
@@ -182,7 +183,18 @@ class UserController extends Controller
 	        $header = array();
 	
 	        foreach ($usrs as $usr) {
-	            fputcsv($handle, $usr->getData());
+	        		        	
+	            fputcsv($handle, array(
+	            	'nom'=>$usr->getNom(),
+	            	'prenom'=>$usr->getPrenom(),
+	            	'username'=>$usr->getUsername(),
+	            	'adresse'=>$usr->getAdresse(),
+	            	'ville'=>$usr->getVille(),
+	            	'codePostal'=>$usr->getCodePostal(),
+	            	'pays'=>$usr->getPays(),
+	            	'dateNaissance'=>$usr->getDateNaissance()->format('Y-m-d H:i:s'),
+	            	'Telephone'=>$usr->getTelephonePortable(),
+	            ));
 	        }
 	
 	        rewind($handle);
