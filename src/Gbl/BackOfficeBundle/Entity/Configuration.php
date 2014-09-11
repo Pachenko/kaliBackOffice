@@ -48,8 +48,8 @@ class Configuration
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_theme", type="integer")
      * @ORM\OneToOne(targetEntity="Theme")
+     * @ORM\JoinColumn(name="id_theme", referencedColumnName="id", nullable=true)
      * @Expose
      * @Groups({"Default"})
      */
@@ -58,8 +58,8 @@ class Configuration
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_transporteur_leger", type="integer")
      * @ORM\OneToOne(targetEntity="Transporteur")
+     * @ORM\JoinColumn(name="id_transporteur_leger", referencedColumnName="id", nullable=true)
      * @Expose
      * @Groups({"Default"})
      */
@@ -68,8 +68,8 @@ class Configuration
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_transporteur_lourd", type="integer")
      * @ORM\OneToOne(targetEntity="Transporteur")
+     * @ORM\JoinColumn(name="id_transporteur_lourd", referencedColumnName="id", nullable=true)
      * @Expose
      * @Groups({"Default"})
      */
@@ -137,7 +137,7 @@ class Configuration
      * @param integer $theme
      * @return Configuration
      */
-    public function setTheme(Theme $theme = null)
+    public function setTheme(Theme $theme)
     {
         $this->theme = $theme;
 
@@ -153,16 +153,6 @@ class Configuration
     {
     	return $this->theme;
     }
-
-    /**
-     * Get transporteurLeger
-     *
-     * @return integer 
-     */
-    public function getTransporteurLeger()
-    {
-        return $this->transporteurLeger;
-    }
     
     /**
      * Set transporteurLeger
@@ -175,6 +165,16 @@ class Configuration
     	$this->transporteurLeger = $transporteurLeger;
     
     	return $this;
+    }
+
+    /**
+     * Get transporteurLeger
+     *
+     * @return integer 
+     */
+    public function getTransporteurLeger()
+    {
+        return $this->transporteurLeger;
     }
     
     /**

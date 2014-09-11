@@ -21,7 +21,15 @@ Configuration
 
 {% block body %}
 <div class="col-lg-12">
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<div class="alert alert-success">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+    <p><img width="20" height="20" src="{{ asset('img/icons/ok.png') }}" alt="success" />  {{ flashMessage }}</p>
+</div>
+    
+{% endfor %}
+
 {{ form(form) }}
- <pre>{{ dump(form) }} 
 <div>
 {% endblock %}
