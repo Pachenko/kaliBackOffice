@@ -175,15 +175,14 @@ class UserController extends Controller
 		
 		if ($request->isMethod ( 'POST' )) {
 									
-			$usr = $this->getDoctrine()->getRepository('GblBackOfficeBundle:User')
+			$usrs = $this->getDoctrine()->getRepository('GblBackOfficeBundle:User')
 			->getSearch($form->getData());
 			
 			$handle = fopen('php://memory', 'r+');
 	        $header = array();
 	
-	        while (false !== ($row = $usr->next())) {
-	            fputcsv($handle, $row[0]);
-	            $em->detach($row[0]);
+	        foreach ($usrs as $usr) {
+	            fputcsv($handle, $usr->getData());
 	        }
 	
 	        rewind($handle);
@@ -194,7 +193,7 @@ class UserController extends Controller
 	            'Content-Type' => 'application/force-download',
 	            'Content-Disposition' => 'attachment; filename="export.csv"'
 	        ));
-		}
+			}
 		
 		return $this->render ( 'GblBackOfficeBundle:User:search.html.twig', array (
 				'form' => $form->createView () 
