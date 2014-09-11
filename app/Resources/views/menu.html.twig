@@ -75,7 +75,7 @@
                         </ul>
                     </li>
                     {% endif %}
-                    {% if app.user.roles.0 == "ROLE_ADMIN" %}
+					{% if app.user.roles.0 == "ROLE_CLIENT" or app.user.roles.0 == "ROLE_ADMIN" %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#client"><i class="fa fa-fw fa-male"></i> Gestion Clients <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="client" class="collapse">
@@ -114,7 +114,7 @@
                         </ul>
                     </li>
                     {% endif %}
-                    {% if app.user.roles.0 == "ROLE_CLIENT" or app.user.roles.0 == "ROLE_ADMIN" %}
+                    {% if app.user.roles.0 == "ROLE_ADMIN" %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#utilisateur"><i class="fa fa-fw fa-users"></i> Gestion Utilisateurs <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="utilisateur" class="collapse">

@@ -25,28 +25,37 @@ class UserController extends Controller
 	
 	/**
 	 * @Route("/user/new")
+	 * 
+	 * Création d'un utilisateur
+	 * 
+	 * @param Request $request
+	 * @return Response
 	 */
-	public function newAction()
+	public function newAction(Request $request)
 	{
 		$user = new User();
 		
 		$form = $this->createForm(new UserFormType(), $user);
 		
-		$request = $this->get('request');
-	
-		if ($request->getMethod() == 'POST'){
-			$form->bind($request);
-			if($form->isValid()){
-				$em = $this->getDoctrine()->getManager();
-				$em->persist($user);
-				$em->flush();
-				$this->get('session')->getFlashBag()->add(
-						'notice',
-						'Utilisateur Ajouté'
-				);
-				
-				return $this->redirect($this->generateUrl('user.index'));
-			}
+		$form->handleRequest($request);
+
+		if($form->isValid()){
+			
+			$factory = $this->get('security.encoder_factory');
+			$encoder = $factory->getEncoder($user);
+			$password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
+			$user->setPassword($password);
+			$user->setEnabled(true);
+			
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($user);
+			$em->flush();
+			$this->get('session')->getFlashBag()->add(
+					'notice',
+					'Utilisateur Ajouté'
+			);
+			
+			return $this->redirect($this->generateUrl('user.index'));
 		}
 				
 		return $this->render('GblBackOfficeBundle:User:new.html.twig',array(
