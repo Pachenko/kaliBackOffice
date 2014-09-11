@@ -26,6 +26,7 @@ class CategorieController extends Controller
 	
 	/**
 	 * @Route("/categorie/new", name="categorie.new")
+	 * @Secure(roles="ROLE_ADMIN")
 	 * 
 	 * @param Request $request
 	 * @return Response
@@ -56,6 +57,7 @@ class CategorieController extends Controller
 		
 	/**
 	 * @Route("/categorie/edit/{id}", name="categorie.edit")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function editAction(Request $request, $id)
 	{
@@ -86,6 +88,7 @@ class CategorieController extends Controller
 	
 	/**
 	 * @Route("/categorie/delete/{id}", name="categorie.delete")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function deleteAction($id)
 	{

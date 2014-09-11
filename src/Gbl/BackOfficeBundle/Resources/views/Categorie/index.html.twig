@@ -40,8 +40,6 @@ Categorie
 		            <th>#</th>
 		            <th>NOM</th>
 		            <th>DESCRIPTION</th>
-		            <th>ECO-PARTICIPATION</th>
-		            <th>POIDS</th>
 		            <th></th>
 		            <th></th>
 		        </tr>
@@ -52,10 +50,8 @@ Categorie
 		            <td>{{ cat.getId }}</td>
 		            <td>{{ cat.getNom }}</td>
 		            <td>{{ cat.getDescription }}</td>
-		            <td>{{ cat.getEcoParticipation }}</td>
-		            <td>{{ cat.getPoids }}</td>
-		            <td class="text-center"><a href="{{ path('categorie.edit', { 'id': cat.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a></td>
-		            <td class="text-center"><a href="{{ path('categorie.delete', { 'id': cat.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
+		            <td class="text-center" width="40px"><a href="{{ path('categorie.edit', { 'id': cat.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a></td>
+		            <td class="text-center" width="40px"><a href="{{ path('categorie.delete', { 'id': cat.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
 		        </tr>
 		        {% endfor %}
 		    </tbody>

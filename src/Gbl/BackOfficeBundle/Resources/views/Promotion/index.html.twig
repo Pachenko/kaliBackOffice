@@ -53,8 +53,8 @@ Promotion
 		            <td>{{ pt.getReduction }}%</td>
 		            <td>{{ pt.getDateDebut|date("d/m/Y") }}</td>
 		            <td>{{ pt.getDateFin|date("d/m/Y") }}</td>
-					<td class="text-center"><a href="{{ path('promotion.edit', { 'id': pt.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a> 
-		            <a href="{{ path('promotion.delete', { 'id': pt.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
+					<td class="text-center" width="40px"><a href="{{ path('promotion.edit', { 'id': pt.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a></td>
+		            <td class="text-center" width="40px"><a href="{{ path('promotion.delete', { 'id': pt.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
 		        </tr>
 		        {% endfor %}
 		    </tbody>

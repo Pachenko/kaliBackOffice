@@ -25,6 +25,7 @@ class ThemeController extends Controller
 	
 	/**
 	 * @Route("/theme/new", name="theme.new")
+	 * @Secure(roles="ROLE_ADMIN")
 	 *
 	 * @param Request $request
 	 * @return Response
@@ -61,6 +62,7 @@ class ThemeController extends Controller
 	
 	/**
 	 * @Route("/theme/edit/{id}", name="theme.edit")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function editAction(Request $request, $id)
 	{
@@ -91,6 +93,7 @@ class ThemeController extends Controller
 	
 	/**
 	 * @Route("/theme/delete/{id}", name="theme.delete")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function deleteAction($id)
 	{

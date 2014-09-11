@@ -20,8 +20,6 @@ class CategorieFormType extends AbstractType
         $builder
             ->add('nom',		 		'text')
             ->add('description',		'text')
-            ->add('ecoParticipation', 	'number')
-            ->add('poids',		 		'text')
         ;
         
         $builder->add('Enregistrer', 'submit');

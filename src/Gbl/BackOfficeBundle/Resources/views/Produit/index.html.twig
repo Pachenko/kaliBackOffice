@@ -64,8 +64,8 @@ Produit
 		            <td>{{ prod.getDimensions }}</td>
 		            <td>{{ prod.getStock }}</td>
 		            <td>{% if prod.getVenteFlash == true %}Oui{% else %}Non{% endif %}</td>
-		            <td><a href="{{ path('produit.edit', { 'id': prod.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a></td>
-		            <td><a href="{{ path('produit.delete', { 'id': prod.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
+		            <td class="text-center" width="40px"><a href="{{ path('produit.edit', { 'id': prod.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a></td>
+		            <td class="text-center" width="40px"><a href="{{ path('produit.delete', { 'id': prod.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
 		        </tr>
 		        {% endfor %}
 		    </tbody>

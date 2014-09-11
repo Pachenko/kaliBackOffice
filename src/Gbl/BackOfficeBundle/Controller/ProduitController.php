@@ -9,13 +9,11 @@ use Gbl\BackOfficeBundle\Entity\Produit;
 use Gbl\BackOfficeBundle\Form\Type\ProduitFormType;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
-
 class ProduitController extends Controller
 {
 	/**
 	 * @Route("/produit", name="produit.index")
-	 * @Route("/produit/")
-   	 * @Secure(roles="ROLE_CLIENT, ROLE_ADMIN")
+   	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
    	 */
 	public function indexAction()
 	{
@@ -31,6 +29,7 @@ class ProduitController extends Controller
 	
 	/**
 	 * @Route("/produit/flash", name="produit.flash")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
 	 */
 	public function venteFlashAction()
 	{
@@ -46,9 +45,10 @@ class ProduitController extends Controller
 	
 	/**
 	 * @Route("/produit/new", name="produit.new")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
 	 * 
 	 * @param Request $request
-	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+	 * @return Response
 	 */
 	public function newAction(Request $request)
 	{
@@ -76,6 +76,7 @@ class ProduitController extends Controller
 		
 	/**
 	 * @Route("/produit/edit/{id}", name="produit.edit")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
 	 */
 	public function editAction(Request $request, $id)
 	{
@@ -106,6 +107,7 @@ class ProduitController extends Controller
 	
 	/**
 	 * @Route("/produit/delete/{id}", name="produit.delete")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
 	 */
 	public function deleteAction($id)
 	{

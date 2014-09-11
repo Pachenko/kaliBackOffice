@@ -63,8 +63,8 @@ Thème
 		            <td>{{ th.getUrlSliderSecond }}</td>
 		            <td><img width="50px" src="{{ asset('uploads/themes/' ~ th.getImageSliderThird)}}" alt="slide3" /></td>
 		            <td>{{ th.getUrlSliderThird }}</td>
-		            <td><a href="{{ path('theme.edit', { 'id': th.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a> 
-		            <a href="{{ path('theme.delete', { 'id': th.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
+		            <td class="text-center" width="40px"><a href="{{ path('theme.edit', { 'id': th.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/edit.png') }}" alt="edit" /></a></td>
+		            <td class="text-center" width="40px"><a href="{{ path('theme.delete', { 'id': th.getId }) }}"><img width="20" height="20" src="{{ asset('img/icons/delete.png') }}" alt="delete" /></a></td>
 		        </tr>
 		        {% endfor %}
 		    </tbody>
