@@ -124,4 +124,61 @@ class UserController extends Controller
 	
 		return $this->render('GblBackOfficeBundle:User:client.html.twig', array('users' => $listeUsers));
 	}
+	
+	/**
+	 * @Route("/user/search")
+	 */
+	public function searchAction(Request $request) {
+		$user = new User ();
+		
+		/*
+		 * $form = $this->createForm(new UserSearchType(), $user); $request = $this->get('request');
+		 */
+		
+		$formBuilder = $this->createFormBuilder($user);
+		
+		
+		$formBuilder->add ( 'nom', 'text', array (
+				'label' => 'Nom',
+				'required' => false 
+		) )->add ( 'prenom', 'text', array (
+				'label' => 'Prénom',
+				'required' => false 
+		) )->add ( 'username', 'text', array (
+				'label' => 'Nom d\'utilisateur',
+				'required' => false 
+		) )->add ( 'email', 'email', array (
+				'label' => 'Email ',
+				'required' => false 
+		) )->add ( 'ville', 'text', array (
+				'label' => 'Ville ',
+				'required' => false 
+		) )->add ( 'codePostal', 'text', array (
+				'label' => 'Code Postal  ',
+				'required' => false 
+		) )->add ( 'pays', 'text', array (
+				'label' => 'Pays  ',
+				'required' => false 
+		) )->add ( 'telephonePortable', 'integer', array (
+				'label' => 'Téléphone',
+				'required' => false 
+		) )->add ( 'rechercher', 'submit' );
+		
+		$form = $formBuilder->getForm();
+		
+		$request = $this->get('request');
+		$form->handleRequest($request);
+		
+		if ($request->isMethod ( 'POST' )) {
+									
+			$usr = $this->getDoctrine()->getRepository('GblBackOfficeBundle:User')
+			->getSearch($form->getData());
+			
+			return $this->redirect ( $this->generateUrl ( 'user.search' ) );
+		}
+		
+		return $this->render ( 'GblBackOfficeBundle:User:search.html.twig', array (
+				'form' => $form->createView () 
+		) );
+	}
 }

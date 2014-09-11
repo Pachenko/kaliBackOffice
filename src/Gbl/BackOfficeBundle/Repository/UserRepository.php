@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
-	public function getUser($data)
+	public function getSearch($data)
 	{
 		$query = $this->_em->createQuery(
 				'SELECT u
