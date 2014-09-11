@@ -12,100 +12,17 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <strong>{{ app.user.username}}</strong> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <strong>{{ app.user.username }}</strong> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="{{ path('user.edit', {'id': app.user.id}) }}"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="{{ path('configuration.index') }}"><i class="fa fa-fw fa-gear"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -116,6 +33,7 @@
                     <li>
                         <a href="{{ path('default.index') }}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
+                    {% if app.user.roles.0 == "ROLE_PRODUCT" or app.user.roles.0 == "ROLE_ADMIN" %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#produit"><i class="fa fa-fw fa-shopping-cart"></i> Gestion Produits <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="produit" class="collapse">
@@ -130,6 +48,8 @@
                             </li>
                         </ul>
                     </li>
+                    {% endif %}
+                    {% if app.user.roles.0 == "ROLE_ADMIN" %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#categorie"><i class="fa fa-fw fa-archive"></i> Gestion Categories <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="categorie" class="collapse">
@@ -141,6 +61,8 @@
                             </li>
                         </ul>
                     </li>
+                    {% endif %}
+                    {% if app.user.roles.0 == "ROLE_ADMIN" %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#promotion"><i class="fa fa-fw fa-barcode"></i> Gestion Promotion <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="promotion" class="collapse">
@@ -152,6 +74,8 @@
                             </li>
                         </ul>
                     </li>
+                    {% endif %}
+                    {% if app.user.roles.0 == "ROLE_ADMIN" %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#client"><i class="fa fa-fw fa-male"></i> Gestion Clients <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="client" class="collapse">
@@ -163,6 +87,8 @@
                             </li>
                         </ul>
                     </li>
+                    {% endif %}
+                    {% if app.user.roles.0 == "ROLE_ADMIN" %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#transporteur"><i class="fa fa-fw fa-truck"></i> Gestion Transporteurs <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="transporteur" class="collapse">
@@ -174,6 +100,8 @@
                             </li>
                         </ul>
                     </li>
+                    {% endif %}
+                    {% if app.user.roles.0 == "ROLE_ADMIN" %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#theme"><i class="fa fa-fw fa-image"></i> Gestion Thèmes <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="theme" class="collapse">
@@ -185,6 +113,8 @@
                             </li>
                         </ul>
                     </li>
+                    {% endif %}
+                    {% if app.user.roles.0 == "ROLE_CLIENT" or app.user.roles.0 == "ROLE_ADMIN" %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#utilisateur"><i class="fa fa-fw fa-users"></i> Gestion Utilisateurs <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="utilisateur" class="collapse">
@@ -196,6 +126,8 @@
                             </li>
                         </ul>
                     </li>
+                    {% endif %}
+                    {% if app.user.roles.0 == "ROLE_ADMIN" %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#commande"><i class="fa fa-cubes"></i> Gestion Commande <i class="fa fa-fw fa-caret-down pull-right"></i></a>
                         <ul id="commande" class="collapse">
@@ -203,10 +135,13 @@
                                 <a href="{{ path('commandes.liste', {'page': '1'}) }}">liste des Commandes</a>
                             </li>
                         </ul>
-                    </li>                    
+                    </li> 
+                    {% endif %}
+                    {% if app.user.roles.0 == "ROLE_ADMIN" %}                   
                     <li>
                         <a href="{{ path('configuration.index') }}"><i class="fa fa-fw fa-cog"></i> Configuration</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
