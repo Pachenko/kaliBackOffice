@@ -33,6 +33,16 @@ class ProduitRestController extends Controller
 	}
 	
 	/**
+	 * Permet de récupérer le Top 10 des produits les plus vendus
+	 *
+	 * @View(serializerGroups={"Default"})
+	 */
+	public function getTop10ProduitAction(){
+		$produits = $this->getDoctrine()->getManager()->getRepository('GblBackOfficeBundle:Produit')->findTop10();
+		return $produits;
+	}
+	
+	/**
 	 * Permet de récupérer les produits d'une categorie
 	 * 
 	 * @View(serializerGroups={"Default"})

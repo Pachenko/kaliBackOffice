@@ -40,4 +40,18 @@ class ProduitRepository extends EntityRepository
 		->getResult();
 	}
 	
+	public function findTop10()
+	{
+		return $this->getEntityManager()
+		->createQuery('
+				SELECT SUM(pc.quantite) AS HIDDEN stat_sum_realised, p FROM GblBackOfficeBundle:Produit p 
+				INNER JOIN GblBackOfficeBundle:ProduitCommande pc WITH p.id = pc.produits
+				INNER JOIN GblBackOfficeBundle:Commande c WITH c.id = pc.commandes
+				WHERE p.stock > 0
+				GROUP BY  p.id
+				')
+		->setMaxResults(10)
+		->getResult();
+	}
+	
 }
