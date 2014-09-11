@@ -26,6 +26,7 @@ class TransporteurController extends Controller
 	
 	/**
 	 * @Route("/transporteur/new", name="transporteur.new")
+	 * @Secure(roles="ROLE_ADMIN")
 	 *
 	 * @param Request $request
 	 * @return Response
@@ -56,6 +57,7 @@ class TransporteurController extends Controller
 	
 	/**
 	 * @Route("/transporteur/edit/{id}", name="transporteur.edit")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function editAction(Request $request, $id)
 	{
@@ -86,6 +88,7 @@ class TransporteurController extends Controller
 	
 	/**
 	 * @Route("/transporteur/delete/{id}", name="transporteur.delete")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function deleteAction($id)
 	{

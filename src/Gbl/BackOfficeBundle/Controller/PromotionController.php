@@ -31,6 +31,7 @@ class PromotionController extends Controller
 	
 	/**
 	 * @Route("/promotion/new", name="promotion.new")
+	 * @Secure(roles="ROLE_ADMIN")
 	 * 
 	 * @param Request $request
 	 * @return Response
@@ -61,6 +62,7 @@ class PromotionController extends Controller
 		
 	/**
 	 * @Route("/promotion/edit/{id}", name="promotion.edit")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function editAction(Request $request, $id)
 	{
@@ -91,6 +93,7 @@ class PromotionController extends Controller
 	
 	/**
 	 * @Route("/promotion/delete/{id}", name="promotion.delete")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function deleteAction($id)
 	{

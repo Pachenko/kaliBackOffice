@@ -25,6 +25,7 @@ class UserController extends Controller
 	
 	/**
 	 * @Route("/user/new")
+	 * @Secure(roles="ROLE_ADMIN")
 	 * 
 	 * Création d'un utilisateur
 	 * 
@@ -64,6 +65,7 @@ class UserController extends Controller
 	
 	/**
 	 * @Route("/user/edit/{id}")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function editAction(Request $request,$id)
 	{
@@ -94,6 +96,7 @@ class UserController extends Controller
 	
 	/**
 	 * @Route("/user/delete/{id}")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function deleteAction($id)
 	{
@@ -116,6 +119,7 @@ class UserController extends Controller
 	
 	/**
 	 * @Route("/user/client")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_CLIENT")
 	 */
 	public function clientAction()
 	{

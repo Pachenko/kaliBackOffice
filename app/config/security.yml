@@ -24,4 +24,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/produit/, role: ROLE_CLIENT }
+        - { path: ^/produit, role: ROLE_PRODUCT }
+        - { path: ^/user, role: ROLE_CLIENT }
