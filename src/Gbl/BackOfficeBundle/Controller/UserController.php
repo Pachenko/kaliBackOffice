@@ -12,6 +12,7 @@ class UserController extends Controller
 {
 	/**
 	 * @Route("/user")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function indexAction()
 	{

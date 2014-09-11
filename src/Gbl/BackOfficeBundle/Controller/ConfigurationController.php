@@ -15,7 +15,7 @@ class ConfigurationController extends Controller
 	/**
 	 * @Route("/configuration", name="configuration.index")
 	 * @Template()
-	 * @Secure(roles="IS_AUTHENTICATED_REMEMBERED")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function indexAction(Request $request)
 	{

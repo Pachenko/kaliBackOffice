@@ -13,6 +13,7 @@ class TransporteurController extends Controller
 {
 	/**
 	 * @Route("/transporteur", name="transporteur.index")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function indexAction()
 	{

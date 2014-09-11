@@ -13,6 +13,7 @@ class CategorieController extends Controller
 {
 	/**
 	 * @Route("/categorie", name="categorie.index")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function indexAction()
 	{

@@ -12,6 +12,7 @@ class ThemeController extends Controller
 {
 	/**
 	 * @Route("/theme", name="theme.index")
+	 * @Secure(roles="ROLE_ADMIN")
 	 */
 	public function indexAction()
 	{

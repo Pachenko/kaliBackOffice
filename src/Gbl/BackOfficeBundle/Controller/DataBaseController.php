@@ -10,6 +10,7 @@ class DatabaseController extends Controller
 {
     /**
      * @Route("/database")
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function indexAction()
     {

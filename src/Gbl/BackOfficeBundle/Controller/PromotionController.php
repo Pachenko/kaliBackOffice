@@ -15,7 +15,7 @@ class PromotionController extends Controller
 	/**
 	 * @Route("/promotion", name="promotion.index")
 	 *  
-   	 * @Secure(roles="ROLE_CLIENT, ROLE_ADMIN")
+   	 * @Secure(roles="ROLE_ADMIN")
    	 */
 	public function indexAction()
 	{
