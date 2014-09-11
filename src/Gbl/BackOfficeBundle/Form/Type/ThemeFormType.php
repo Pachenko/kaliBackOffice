@@ -32,6 +32,10 @@ class ThemeFormType extends AbstractType
         $builder->add('urlSliderThird',	'text');
         
         $builder->add('Enregistrer', 'submit');
+        
+        $builder->add('Retour', 'button', array(
+        		'attr' => array('onClick' => 'javascript:history.go(-1)'),
+        ));
     }
     
     /**

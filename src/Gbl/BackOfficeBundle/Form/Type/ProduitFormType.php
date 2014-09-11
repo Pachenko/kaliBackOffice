@@ -16,6 +16,7 @@ class ProduitFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$builder->setMethod('POST');
+    	$builder->setRequired(false);
     	
         $builder
             ->add('nom',		 	'text')
@@ -51,6 +52,9 @@ class ProduitFormType extends AbstractType
         $builder->add('fileImgUpload','file');
         
         $builder->add('Enregistrer', 'submit');
+        $builder->add('Retour', 'button', array(
+        		'attr' => array('onClick' => 'javascript:history.go(-1)'),
+        ));
     }
     
     /**

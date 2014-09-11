@@ -17,18 +17,11 @@ class UserFormType extends AbstractType
     	$builder->setMethod('POST');
     	
         $builder
-           ->add('nom', 				'text')
+            ->add('nom', 				'text')
 			->add('prenom',				'text')
 			->add('username',			'text')
 			->add('password',			'password')
 			->add('email',				'email')
-			->add('adresse',			'text')
-			->add('ville',				'text')
-			->add('codePostal',			'text')
-			->add('pays',				'text')
-			->add('dateNaissance',		'date')
-			->add('telephoneFixe',		'integer')
-			->add('telephonePortable',	'integer')
           	->add('roles', 'choice', 
           		array(
           			'choices' => 
@@ -42,6 +35,10 @@ class UserFormType extends AbstractType
             ));
         
         $builder->add('Ajouter', 'submit');
+        
+        $builder->add('Retour', 'button', array(
+        		'attr' => array('onClick' => 'javascript:history.go(-1)'),
+        ));
     }
     
     /**

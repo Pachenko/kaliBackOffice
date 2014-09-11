@@ -21,6 +21,10 @@ class TransporteurFormType extends AbstractType
         ;
         
         $builder->add('Enregistrer', 'submit');
+        
+        $builder->add('Retour', 'button', array(
+        		'attr' => array('onClick' => 'javascript:history.go(-1)'),
+        ));
     }
     
     /**
