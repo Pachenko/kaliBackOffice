@@ -45,6 +45,8 @@ class Produit
      * @var string
      *
      * @ORM\Column(name="reference", type="string", length=255)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $reference;
 
@@ -52,6 +54,8 @@ class Produit
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $description;
 
@@ -59,6 +63,8 @@ class Produit
      * @var float
      *
      * @ORM\Column(name="prix", type="float")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $prix;
 
@@ -66,6 +72,8 @@ class Produit
      * @var float
      *
      * @ORM\Column(name="poids", type="float")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $poids;
 
@@ -73,6 +81,8 @@ class Produit
      * @var float
      *
      * @ORM\Column(name="dimensions", type="string")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $dimensions;
 
@@ -80,6 +90,8 @@ class Produit
      * @var string
      *
      * @ORM\Column(name="stock", type="string")
+     * @Expose
+     * @Groups({"Default"})
      */
     protected $stock;
     
@@ -87,6 +99,8 @@ class Produit
      * @var boolean
      *
      * @ORM\Column(name="vente_flash", type="boolean")
+     * @Expose
+     * @Groups({"Default"})
      */
     protected $venteFlash;
     
@@ -94,6 +108,8 @@ class Produit
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="date")
+     * @Expose
+     * @Groups({"Default"})
      */
     private $created;
     
@@ -101,12 +117,16 @@ class Produit
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="date", nullable=true)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $updated;
 
     /**
 	 * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="produits")
 	 * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id")
+	 * @Expose
+     * @Groups({"Default"})
      */
     private $categorie;
     
@@ -119,6 +139,8 @@ class Produit
      * @var string
      *
      * @ORM\Column(name="file_img", type="string", length=255, nullable=true)
+     * @Expose
+     * @Groups({"Default"})
      */
     private $fileImg;
 

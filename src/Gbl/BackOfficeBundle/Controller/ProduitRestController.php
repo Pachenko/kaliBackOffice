@@ -13,14 +13,12 @@ class ProduitRestController extends Controller
 	 *
 	 * @View(serializerGroups={"Default"})
 	 */
-	public function getProduitAction($produit){
-		$produits = $this->getDoctrine()->getRepository('GblBackOfficeBundle:Produit')->find($produit);
+	public function getProduitAction($reference){
+		$produit = $this->getDoctrine()
+						 ->getRepository('GblBackOfficeBundle:Produit')
+						 ->findOneBy(array('reference' => $reference));
 		
-		if(!is_object($produits)){
-			throw $this->createNotFoundException();
-		}
-	
-		return $produits;
+		return $produit;
 	}
 	
 	/**
@@ -31,6 +29,25 @@ class ProduitRestController extends Controller
 	public function getProduitsAction(){
 		$produits = $this->getDoctrine()->getRepository('GblBackOfficeBundle:Produit')->findAll();
 	
+		return $produits;
+	}
+	
+	/**
+	 * Permet de récupérer les produits d'une categorie
+	 * 
+	 * @View(serializerGroups={"Default"})
+	 */
+	public function getProductAction($categorie)
+	{
+		$idCategorie = $this->getDoctrine()
+					   ->getRepository('GblBackOfficeBundle:Categorie')
+					   ->findOneBy(array('nom' => $categorie))
+					   ->getId();
+		
+		$produits = $this->getDoctrine()
+						 ->getRepository('GblBackOfficeBundle:Produit')
+						 ->findBy(array('categorie' => $idCategorie));
+
 		return $produits;
 	}
 }

@@ -29,8 +29,11 @@ class CategorieRestController extends Controller
 	 * @View(serializerGroups={"Default"})
 	 */
 	public function getCategoriesAction(){
-		$categories = $this->getDoctrine()->getRepository('GblBackOfficeBundle:Categorie')->findAll();
-	
+		$categories = $this->getDoctrine()
+						   ->getManager()
+						   ->getRepository('GblBackOfficeBundle:Categorie')
+						   ->findAllGroupBy();
+		
 		return $categories;
 	}
 }
