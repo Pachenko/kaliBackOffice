@@ -15,7 +15,7 @@ class ProduitController extends Controller
 	 * Affiche la liste des produits avec et sans stock
 	 * 
 	 * @Route("/produit", name="produit.index")
-   	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
+   	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT, ROLE_POWER")
    	 */
 	public function indexAction()
 	{
@@ -33,7 +33,7 @@ class ProduitController extends Controller
 	 * Affiche les produits en vente flash
 	 * 
 	 * @Route("/produit/flash", name="produit.flash")
-	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT, ROLE_POWER")
 	 */
 	public function venteFlashAction()
 	{
@@ -51,7 +51,7 @@ class ProduitController extends Controller
 	 * Créer un nouveau produit
 	 * 
 	 * @Route("/produit/new", name="produit.new")
-	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT, ROLE_POWER")
 	 * 
 	 * @param Request $request
 	 * @return Response
@@ -84,7 +84,7 @@ class ProduitController extends Controller
 	 * Editer un produit
 	 * 
 	 * @Route("/produit/edit/{id}", name="produit.edit")
-	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT, ROLE_POWER")
 	 */
 	public function editAction(Request $request, $id)
 	{
@@ -117,7 +117,7 @@ class ProduitController extends Controller
 	 * Supprimer un produit
 	 * 
 	 * @Route("/produit/delete/{id}", name="produit.delete")
-	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT, ROLE_POWER")
 	 */
 	public function deleteAction($id)
 	{

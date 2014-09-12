@@ -15,7 +15,7 @@ class ThemeController extends Controller
 	 * Affiche la liste des thèmes
 	 * 
 	 * @Route("/theme", name="theme.index")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 */
 	public function indexAction()
 	{
@@ -29,7 +29,7 @@ class ThemeController extends Controller
 	 * Création d'un thème
 	 * 
 	 * @Route("/theme/new", name="theme.new")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 *
 	 * @param Request $request
 	 * @return Response
@@ -68,7 +68,7 @@ class ThemeController extends Controller
 	 * Editer un thème
 	 * 
 	 * @Route("/theme/edit/{id}", name="theme.edit")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 */
 	public function editAction(Request $request, $id)
 	{
@@ -101,7 +101,7 @@ class ThemeController extends Controller
 	 * Supprimer un thème
 	 * 
 	 * @Route("/theme/delete/{id}", name="theme.delete")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 */
 	public function deleteAction($id)
 	{

@@ -8,13 +8,14 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ThemeFormType extends AbstractType
 {
-        /**
+     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$builder->setMethod('POST');
+    	$builder->setRequired(false);
     	
     	$builder->add('logoUpload','file');
     	

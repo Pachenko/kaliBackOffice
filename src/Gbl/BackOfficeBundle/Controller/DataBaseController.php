@@ -11,7 +11,7 @@ class DatabaseController extends Controller
 {
     /**
      * @Route("/database")
-     * @Secure(roles="ROLE_ADMIN")
+     * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
      */
     public function indexAction()
     {

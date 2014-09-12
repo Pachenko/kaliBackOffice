@@ -15,7 +15,7 @@ class CommandeController extends Controller
 	 * 
 	 * @Route("/commandes/liste/{page}", name="commandes.liste")
 	 * @Route("/commandes/liste/", defaults={"page" = 1})
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 * @Template()
 	 */
 	public function commandeAction($page)

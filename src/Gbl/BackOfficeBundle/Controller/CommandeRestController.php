@@ -5,6 +5,7 @@ namespace Gbl\BackOfficeBundle\Controller;
 use FOS\RestBundle\Controller\Annotations\View;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Request;
 
 class CommandeRestController extends Controller 
 {

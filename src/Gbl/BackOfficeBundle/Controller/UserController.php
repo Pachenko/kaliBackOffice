@@ -16,7 +16,7 @@ class UserController extends Controller
 	 * Affiche la liste des utilisateurs
 	 * 
 	 * @Route("/user")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 */
 	public function indexAction()
 	{
@@ -30,7 +30,7 @@ class UserController extends Controller
 	 * Création d'un utilisateur
 	 * 
 	 * @Route("/user/new")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 * 
 	 * @param Request $request
 	 * @return Response
@@ -70,7 +70,7 @@ class UserController extends Controller
 	 * Editer un utilisateur
 	 * 
 	 * @Route("/user/edit/{id}")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 */
 	public function editAction(Request $request,$id)
 	{
@@ -103,7 +103,7 @@ class UserController extends Controller
 	 * Supprimer un utilisateur
 	 * 
 	 * @Route("/user/delete/{id}")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 */
 	public function deleteAction($id)
 	{
@@ -128,7 +128,7 @@ class UserController extends Controller
 	 * Affiche la liste des clients
 	 * 
 	 * @Route("/user/client")
-	 * @Secure(roles="ROLE_ADMIN, ROLE_CLIENT")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_CLIENT, ROLE_POWER")
 	 */
 	public function clientAction()
 	{
@@ -142,6 +142,7 @@ class UserController extends Controller
 	 * Permet l'exportation des utilisateurs selon certains critères
 	 * 
 	 * @Route("/user/search")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_CLIENT, ROLE_POWER")
 	 */
 	public function searchAction(Request $request) {
 		$user = new User ();

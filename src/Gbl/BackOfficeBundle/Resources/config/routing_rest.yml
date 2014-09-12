@@ -4,7 +4,7 @@ users :
   name_prefix:  api_
   
 produits:
-    type:     rest
+    type: rest
     resource: "GblBackOfficeBundle:ProduitRest"
     name_prefix:  api_
     

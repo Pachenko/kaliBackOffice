@@ -16,7 +16,7 @@ class CategorieController extends Controller
 	 * Affiche la liste des catégories
 	 * 
 	 * @Route("/categorie", name="categorie.index")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 */
 	public function indexAction()
 	{
@@ -30,7 +30,7 @@ class CategorieController extends Controller
 	 * Créer une nouvelle catégorie
 	 * 
 	 * @Route("/categorie/new", name="categorie.new")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 * 
 	 * @param Request $request
 	 * @return Response
@@ -63,7 +63,7 @@ class CategorieController extends Controller
 	 * Editer une catégorie
 	 * 
 	 * @Route("/categorie/edit/{id}", name="categorie.edit")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 */
 	public function editAction(Request $request, $id)
 	{
@@ -96,7 +96,7 @@ class CategorieController extends Controller
 	 * Supprimer une catégorie
 	 * 
 	 * @Route("/categorie/delete/{id}", name="categorie.delete")
-	 * @Secure(roles="ROLE_ADMIN")
+	 * @Secure(roles="ROLE_ADMIN, ROLE_POWER")
 	 */
 	public function deleteAction($id)
 	{
