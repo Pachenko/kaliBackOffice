@@ -194,11 +194,12 @@ class UserController extends Controller
 	        $header = array();
 	
 	        foreach ($usrs as $usr) {
-	        		        	
+	        	
 	            fputcsv($handle, array(
 	            	'nom'=>$usr->getNom(),
 	            	'prenom'=>$usr->getPrenom(),
 	            	'username'=>$usr->getUsername(),
+	            	'email'=>$usr->getEmail(),
 	            	'adresse'=>$usr->getAdresse(),
 	            	'ville'=>$usr->getVille(),
 	            	'codePostal'=>$usr->getCodePostal(),

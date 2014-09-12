@@ -24,14 +24,16 @@ class UserRepository extends EntityRepository
 				or u.ville like :ville
 				or u.codePostal like :codePostal
 				or u.telephoneFixe like :telephoneFixe
+				or u.roles like :roles
 			    
 	')->setParameter('nom', $data->getNom())
 	->setParameter('prenom', $data->getPrenom())
 	->setParameter('username', $data->getUsername())
-	->setParameter('email', $data->getEmail())
+	->setParameter('email', $data->getEmail()==null?'%':$data->getEmail())
 	->setParameter('ville', $data->getVille())
 	->setParameter('codePostal', $data->getCodePostal())
-	->setParameter('telephoneFixe', $data->getTelephoneFixe());
+	->setParameter('telephoneFixe', $data->getTelephoneFixe())
+	->setParameter('roles', 'ROLE_CLIENT');
 		
 		$users = $query->getResult();
 		
