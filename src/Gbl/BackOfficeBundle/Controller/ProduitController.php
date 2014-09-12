@@ -12,6 +12,8 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 class ProduitController extends Controller
 {
 	/**
+	 * Affiche la liste des produits avec et sans stock
+	 * 
 	 * @Route("/produit", name="produit.index")
    	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
    	 */
@@ -28,6 +30,8 @@ class ProduitController extends Controller
 	}
 	
 	/**
+	 * Affiche les produits en vente flash
+	 * 
 	 * @Route("/produit/flash", name="produit.flash")
 	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
 	 */
@@ -44,6 +48,8 @@ class ProduitController extends Controller
 	}
 	
 	/**
+	 * Créer un nouveau produit
+	 * 
 	 * @Route("/produit/new", name="produit.new")
 	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
 	 * 
@@ -75,6 +81,8 @@ class ProduitController extends Controller
 	}
 		
 	/**
+	 * Editer un produit
+	 * 
 	 * @Route("/produit/edit/{id}", name="produit.edit")
 	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
 	 */
@@ -106,6 +114,8 @@ class ProduitController extends Controller
 	}
 	
 	/**
+	 * Supprimer un produit
+	 * 
 	 * @Route("/produit/delete/{id}", name="produit.delete")
 	 * @Secure(roles="ROLE_ADMIN, ROLE_PRODUCT")
 	 */

@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends Controller
 {
 	/**
+	 * Affiche la liste des utilisateurs
+	 * 
 	 * @Route("/user")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */
@@ -25,10 +27,10 @@ class UserController extends Controller
 	}
 	
 	/**
+	 * Création d'un utilisateur
+	 * 
 	 * @Route("/user/new")
 	 * @Secure(roles="ROLE_ADMIN")
-	 * 
-	 * Création d'un utilisateur
 	 * 
 	 * @param Request $request
 	 * @return Response
@@ -65,6 +67,8 @@ class UserController extends Controller
 	}
 	
 	/**
+	 * Editer un utilisateur
+	 * 
 	 * @Route("/user/edit/{id}")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */
@@ -96,6 +100,8 @@ class UserController extends Controller
 	}
 	
 	/**
+	 * Supprimer un utilisateur
+	 * 
 	 * @Route("/user/delete/{id}")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */
@@ -119,6 +125,8 @@ class UserController extends Controller
 	}
 	
 	/**
+	 * Affiche la liste des clients
+	 * 
 	 * @Route("/user/client")
 	 * @Secure(roles="ROLE_ADMIN, ROLE_CLIENT")
 	 */
@@ -131,6 +139,8 @@ class UserController extends Controller
 	}
 	
 	/**
+	 * Permet l'exportation des utilisateurs selon certains critères
+	 * 
 	 * @Route("/user/search")
 	 */
 	public function searchAction(Request $request) {

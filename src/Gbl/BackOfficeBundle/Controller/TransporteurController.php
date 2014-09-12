@@ -13,6 +13,8 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 class TransporteurController extends Controller
 {
 	/**
+	 * Affiche la liste des transporteurs
+	 * 
 	 * @Route("/transporteur", name="transporteur.index")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */
@@ -25,6 +27,8 @@ class TransporteurController extends Controller
 	}
 	
 	/**
+	 * Ajout un transporteur
+	 * 
 	 * @Route("/transporteur/new", name="transporteur.new")
 	 * @Secure(roles="ROLE_ADMIN")
 	 *
@@ -56,6 +60,8 @@ class TransporteurController extends Controller
 	}
 	
 	/**
+	 * Editer un transporteur
+	 * 
 	 * @Route("/transporteur/edit/{id}", name="transporteur.edit")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */
@@ -87,6 +93,8 @@ class TransporteurController extends Controller
 	}
 	
 	/**
+	 * Supprimer un transporteur
+	 * 
 	 * @Route("/transporteur/delete/{id}", name="transporteur.delete")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */

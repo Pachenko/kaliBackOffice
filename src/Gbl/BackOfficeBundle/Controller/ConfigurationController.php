@@ -13,6 +13,8 @@ use Gbl\BackOfficeBundle\Form\Type\ConfigurationFormType;
 class ConfigurationController extends Controller
 {
 	/**
+	 * Affiche la configuration du site Vitrine
+	 * 
 	 * @Route("/configuration", name="configuration.index")
 	 * @Template()
 	 * @Secure(roles="ROLE_ADMIN")

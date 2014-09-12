@@ -11,6 +11,8 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 class CommandeController extends Controller
 {
 	/**
+	 * Liste toutes les commandes
+	 * 
 	 * @Route("/commandes/liste/{page}", name="commandes.liste")
 	 * @Route("/commandes/liste/", defaults={"page" = 1})
 	 * @Secure(roles="ROLE_ADMIN")

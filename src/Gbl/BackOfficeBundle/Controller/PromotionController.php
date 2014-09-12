@@ -13,8 +13,9 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 class PromotionController extends Controller
 {
 	/**
+	 * Affiche la liste des promotions
+	 * 
 	 * @Route("/promotion", name="promotion.index")
-	 *  
    	 * @Secure(roles="ROLE_ADMIN")
    	 */
 	public function indexAction()
@@ -30,6 +31,8 @@ class PromotionController extends Controller
 	}
 	
 	/**
+	 * Créer une promotion
+	 * 
 	 * @Route("/promotion/new", name="promotion.new")
 	 * @Secure(roles="ROLE_ADMIN")
 	 * 
@@ -61,6 +64,8 @@ class PromotionController extends Controller
 	}
 		
 	/**
+	 * Editer une promotion
+	 * 
 	 * @Route("/promotion/edit/{id}", name="promotion.edit")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */
@@ -92,6 +97,8 @@ class PromotionController extends Controller
 	}
 	
 	/**
+	 * Supprimer une promotion
+	 * 
 	 * @Route("/promotion/delete/{id}", name="promotion.delete")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */

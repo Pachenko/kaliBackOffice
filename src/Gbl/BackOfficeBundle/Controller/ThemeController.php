@@ -12,6 +12,8 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 class ThemeController extends Controller
 {
 	/**
+	 * Affiche la liste des thèmes
+	 * 
 	 * @Route("/theme", name="theme.index")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */
@@ -24,6 +26,8 @@ class ThemeController extends Controller
 	}
 	
 	/**
+	 * Création d'un thème
+	 * 
 	 * @Route("/theme/new", name="theme.new")
 	 * @Secure(roles="ROLE_ADMIN")
 	 *
@@ -61,6 +65,8 @@ class ThemeController extends Controller
 	}
 	
 	/**
+	 * Editer un thème
+	 * 
 	 * @Route("/theme/edit/{id}", name="theme.edit")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */
@@ -92,6 +98,8 @@ class ThemeController extends Controller
 	}	
 	
 	/**
+	 * Supprimer un thème
+	 * 
 	 * @Route("/theme/delete/{id}", name="theme.delete")
 	 * @Secure(roles="ROLE_ADMIN")
 	 */
